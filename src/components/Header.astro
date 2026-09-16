@@ -1,0 +1,176 @@
+---
+import { site } from '../config/site';
+import { getNavItems } from '../lib/nav';
+import { withBase } from '../lib/url';
+
+interface Props {
+  activePath: string;
+}
+
+const { activePath } = Astro.props;
+const navItems = getNavItems();
+const menuId = 'primary-navigation';
+
+function isActive(path: string): boolean {
+  return path === activePath;
+}
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__logo" href={withBase('/')}>{site.brand.name}</a>
+
+    <button
+      class="site-header__toggle touch-target"
+      type="button"
+      data-nav-toggle
+      aria-controls={menuId}
+      aria-expanded="false"
+    >
+      <span class="site-header__toggle-label">Menú</span>
+      <span class="site-header__toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav class="site-header__nav" aria-label="Navegación principal">
+      <ul class="site-header__menu" id={menuId} data-nav-menu>
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                class="site-header__link touch-target"
+                href={withBase(item.path)}
+                aria-current={isActive(item.path) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import '../scripts/nav-toggle.ts';
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-bg);
+    border-block-end: 1px solid var(--color-surface-2);
+  }
+
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding-block: var(--space-sm);
+  }
+
+  .site-header__logo {
+    font-family: var(--font-title);
+    font-size: 1.375rem;
+    line-height: 1.1;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .site-header__logo:hover {
+    color: var(--color-accent);
+  }
+
+  /* --- Toggle button: visible only on narrow viewports (Req 3.6) --- */
+  .site-header__toggle {
+    gap: var(--space-2xs);
+    padding-inline: var(--space-sm);
+    background: transparent;
+    border: 1px solid var(--color-surface-2);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .site-header__toggle-icon {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    box-shadow:
+      0 -6px 0 currentColor,
+      0 6px 0 currentColor;
+  }
+
+  /* --- Navigation menu --- */
+  .site-header__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-header__link {
+    display: flex;
+    padding-inline: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .site-header__link:hover {
+    color: var(--color-accent);
+  }
+
+  .site-header__link[aria-current='page'] {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  /*
+    Mobile-first collapse (<= 768px): the menu is hidden by default and the
+    toggle drives visibility via the [data-open] attribute set by
+    nav-toggle.ts. Without JavaScript the toggle click does nothing, so the
+    menu opens on wider viewports instead (see the min-width block below).
+  */
+  .site-header__nav {
+    flex-basis: 100%;
+  }
+
+  .site-header__menu[data-nav-menu] {
+    display: none;
+    flex-direction: column;
+    gap: var(--touch-gap);
+    padding-block: var(--space-xs);
+  }
+
+  .site-header__menu[data-nav-menu][data-open='true'] {
+    display: flex;
+  }
+
+  /* --- Tablet/desktop (>= 769px): full nav, no toggle --- */
+  @media (min-width: 769px) {
+    .site-header__toggle {
+      display: none;
+    }
+
+    .site-header__nav {
+      flex-basis: auto;
+    }
+
+    .site-header__menu[data-nav-menu] {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--touch-gap);
+      padding-block: 0;
+    }
+  }
+</style>

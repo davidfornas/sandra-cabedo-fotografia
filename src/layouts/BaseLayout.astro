@@ -1,0 +1,26 @@
+---
+import Seo, { type SeoProps } from '../components/Seo.astro';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/utilities.css';
+
+export interface BaseLayoutProps extends SeoProps {
+  activePath: string;
+}
+
+const { title, description, path, ogImage, activePath } = Astro.props as BaseLayoutProps;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <Seo title={title} description={description} path={path} ogImage={ogImage} />
+  </head>
+  <body data-active-path={activePath}>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>

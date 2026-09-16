@@ -1,0 +1,32 @@
+---
+import { absoluteUrl } from '../lib/url';
+
+export interface SeoProps {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+}
+
+const { title, description, path, ogImage } = Astro.props as SeoProps;
+
+const siteOrigin = Astro.site?.toString() ?? Astro.url.origin;
+const canonicalUrl = absoluteUrl(path, siteOrigin);
+const ogImageUrl = ogImage ? absoluteUrl(ogImage, siteOrigin) : undefined;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:locale" content="es_ES" />
+{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+<meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}

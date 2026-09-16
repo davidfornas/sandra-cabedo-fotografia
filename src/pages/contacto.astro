@@ -1,0 +1,39 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import InstagramCTA from '../components/InstagramCTA.astro';
+---
+
+<PageLayout
+  title="Contacto · Sandra Cabedo Fotografía"
+  description="Reserva tu sesión de fotografía familiar en Castellón. Escríbeme por WhatsApp y cuéntame qué tipo de sesión imagináis para vuestra familia."
+  path="/contacto/"
+  activePath="/contacto/"
+>
+  <section class="section">
+    <div class="container-narrow stack center-text">
+      <SectionTitle as="h1" align="center">Reserva tu sesión</SectionTitle>
+
+      <p class="contacto__intro"> Cada familia y cada momento son diferentes. Cuéntame un poquito sobre vosotros y la sesión que tienes en mente. Escríbeme por WhatsApp y hablamos con calma para preparar una sesión que sea realmente vuestra. </p>
+
+      <div class="touch-row contacto__ctas"> 
+        <WhatsAppCTA label="Hablemos por WhatsApp" variant="primary" /> 
+        <InstagramCTA label="Sígueme en Instagram" variant="secondary" /> 
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .contacto__intro {
+    color: var(--color-text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .contacto__ctas {
+    justify-content: center;
+    margin-block-start: var(--space-sm);
+  }
+</style>

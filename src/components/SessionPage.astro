@@ -1,0 +1,131 @@
+---
+import { getEntry, render } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionTitle from './SectionTitle.astro';
+import Gallery from './Gallery.astro';
+import WhatsAppCTA, { type WhatsAppLabel } from './WhatsAppCTA.astro';
+import type { GalleryImage } from '../lib/gallery';
+
+interface Props {
+  slug: 'newborn' | 'familia' | 'crecer-juntos' | 'embarazo';
+  path: string;
+  seoTitle: string;
+  seoDescription: string;
+  ctaLabel: WhatsAppLabel;
+  conceptLine?: string;
+}
+
+const { slug, path, seoTitle, seoDescription, ctaLabel, conceptLine } = Astro.props;
+
+const entry = await getEntry('sessions', slug);
+if (!entry) {
+  throw new Error(`No se encontró la entrada de sesión "${slug}".`);
+}
+
+const { title, description, images, provisional } = entry.data;
+
+const galleryImages: GalleryImage[] = images.map((image) => ({
+  src: image.src,
+  alt: image.alt,
+  width: image.src.width,
+  height: image.src.height,
+  orientation: image.orientation,
+}));
+
+const { Content } = await render(entry);
+---
+
+<PageLayout
+  title={seoTitle}
+  description={seoDescription}
+  path={path}
+  activePath={path}
+>
+  <article class="session section">
+    <div class="container session__intro">
+      <SectionTitle as="h1" eyebrow="Sesión">{title}</SectionTitle>
+      <p class="session__description">{description}</p>
+      {conceptLine && <p class="session__concept">{conceptLine}</p>}
+      <div class="cluster session__cta">
+        <WhatsAppCTA label={ctaLabel} />
+      </div>
+    </div>
+
+    <div class="container session__gallery">
+      <Gallery images={galleryImages} />
+    </div>
+
+    <div class="container session__body">
+      <Content />
+    </div>
+
+    {
+      provisional && (
+        <div class="container">
+          <p class="session__notice" role="note">
+            Contenido e imágenes provisionales para esta demo. Las fotografías
+            que ves arriba son ejemplos que se sustituirán por el trabajo
+            definitivo de Sandra.
+          </p>
+        </div>
+      )
+    }
+  </article>
+</PageLayout>
+
+<style>
+  .session__intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-block-end: var(--space-xl);
+  }
+
+  .session__description {
+    max-width: 60ch;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  .session__concept {
+    max-width: 60ch;
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 1.375rem;
+    line-height: 1.4;
+    color: var(--color-text);
+  }
+
+  .session__gallery {
+    margin-block-end: var(--space-xl);
+  }
+
+  .session__body {
+    max-width: 60ch;
+    margin-block-end: var(--space-xl);
+    color: var(--color-text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .session__body :global(p) {
+    margin-block: 0 var(--space-sm);
+  }
+
+  .session__body :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .session__notice {
+    max-width: 60ch;
+    margin: 0;
+    padding: var(--space-md);
+    border-radius: 6px;
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,362 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import SessionCard from '../components/SessionCard.astro';
+import Gallery from '../components/Gallery.astro';
+import ImageFrame from '../components/ImageFrame.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import InstagramCTA from '../components/InstagramCTA.astro';
+import { site } from '../config/site';
+import { withBase } from '../lib/url';
+import type { GalleryImage } from '../lib/gallery';
+
+import heroImage from '../images/mocks/mock-05.jpg';
+import portraitImage from '../images/mocks/mock-09.jpg';
+import studioImage from '../images/mocks/mock-14.jpg';
+
+import portfolio01 from '../images/mocks/mock-01.jpg';
+import portfolio02 from '../images/mocks/mock-02.jpg';
+import portfolio03 from '../images/mocks/mock-06.jpg';
+import portfolio04 from '../images/mocks/mock-07.jpg';
+import portfolio05 from '../images/mocks/mock-08.jpg';
+import portfolio06 from '../images/mocks/mock-11.jpg';
+import portfolio07 from '../images/mocks/mock-12.jpg';
+import portfolio08 from '../images/mocks/mock-15.jpg';
+import portfolio09 from '../images/mocks/mock-18.jpg';
+
+import feed01 from '../images/mocks/mock-03.jpg';
+import feed02 from '../images/mocks/mock-04.jpg';
+import feed03 from '../images/mocks/mock-10.jpg';
+import feed04 from '../images/mocks/mock-13.jpg';
+import feed05 from '../images/mocks/mock-16.jpg';
+import feed06 from '../images/mocks/mock-17.jpg';
+
+const seo = {
+  title: 'Sandra Cabedo Fotografía · Fotógrafo familiar en Castellón',
+  description:
+    'Fotografía familiar, newborn e infantil en Castellón y alrededores. ' +
+    'Sesiones naturales que conservan los recuerdos de vuestra familia y el crecer de los peques.',
+  path: '/',
+};
+
+const navOrder = site.nav.map((item) => item.path.replace(/\//g, ''));
+
+const sessionEntries = await getCollection('sessions');
+const sessions = sessionEntries
+  .map((entry) => ({
+    slug: entry.slug,
+    title: entry.data.title,
+    description: entry.data.description,
+    coverImage: entry.data.coverImage,
+    coverAlt: entry.data.coverAlt,
+  }))
+  .sort((a, b) => navOrder.indexOf(a.slug) - navOrder.indexOf(b.slug));
+
+const portfolioImages: GalleryImage[] = [
+  { src: portfolio01, alt: 'Recién nacido dormido acurrucado entre las manos de sus padres', orientation: 'portrait' },
+  { src: portfolio02, alt: 'Detalle de las manos de un bebé sobre el pecho de su madre', orientation: 'landscape' },
+  { src: portfolio03, alt: 'Familia riendo abrazada durante un paseo al aire libre', orientation: 'portrait' },
+  { src: portfolio04, alt: 'Niños jugando de forma espontánea en un día luminoso', orientation: 'landscape' },
+  { src: portfolio05, alt: 'Madre embarazada acariciando su vientre en un ambiente cálido', orientation: 'portrait' },
+  { src: portfolio06, alt: 'Retrato familiar en tonos suaves y naturales', orientation: 'portrait' },
+  { src: portfolio07, alt: 'Momento de complicidad entre hermanos', orientation: 'landscape' },
+  { src: portfolio08, alt: 'Niña sonriendo durante una sesión relajada', orientation: 'portrait' },
+  { src: portfolio09, alt: 'Abrazo familiar captado con luz natural', orientation: 'landscape' },
+].map((image) => ({
+  ...image,
+  width: image.src.width,
+  height: image.src.height,
+}));
+
+const feedImages = [
+  { src: feed01, alt: 'Recién nacido descansando en un ambiente luminoso' },
+  { src: feed02, alt: 'Padres sosteniendo con cuidado a su bebé' },
+  { src: feed03, alt: 'Niños corriendo felices durante una sesión familiar' },
+  { src: feed04, alt: 'Retrato cercano de una familia sonriendo' },
+  { src: feed05, alt: 'Detalle de manos entrelazadas de una familia' },
+  { src: feed06, alt: 'Momento tierno entre madre e hijo' },
+];
+
+const conoceMeHref = withBase('/sobre-mi/');
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  path={seo.path}
+  activePath="/"
+>
+  <Hero
+    image={heroImage}
+    alt="Familia abrazada disfrutando de un momento natural al aire libre en Castellón"
+    title="Fotografías de vuestra historia"
+    subtitle="Conservo los recuerdos naturales de vuestra familia y el crecer de los peques, sin poses forzadas."
+  />
+
+  <section class="section presentation">
+    <div class="container presentation__inner">
+      <div class="presentation__text">
+        <SectionTitle as="h2" eyebrow="Sobre mí">Hola, soy Sandra</SectionTitle>
+        <p>
+          Me dedico a la fotografía familiar y de la infancia en Castellón y alrededores.
+          Me gusta trabajar sin prisa, dejando que cada familia sea como es, para captar
+          los gestos, los abrazos y la naturalidad de vuestro día a día.
+        </p>
+        <p>
+          Creo en las imágenes honestas, cálidas y luminosas, esas que dentro de unos años
+          os hagan recordar exactamente cómo os sentíais.
+        </p>
+        <p class="presentation__cta">
+          <a class="link-cta touch-target" href={conoceMeHref}>Conóceme</a>
+        </p>
+      </div>
+      <div class="presentation__media">
+        <ImageFrame
+          src={portraitImage}
+          alt="Retrato de Sandra, fotógrafa familiar en Castellón"
+          loading="lazy"
+          sizes="(min-width: 768px) 40vw, 90vw"
+          class="presentation__portrait"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section sessions">
+    <div class="container">
+      <SectionTitle as="h2" eyebrow="Experiencias" align="center">
+        Tipos de sesión
+      </SectionTitle>
+      <p class="sessions__intro">
+        Cada etapa merece su propia mirada. Estas son las experiencias fotográficas que
+        acompaño en Castellón y alrededores.
+      </p>
+      <div class="sessions__grid">
+        {
+          sessions.map((session) => (
+            <SessionCard
+              slug={session.slug}
+              title={session.title}
+              description={session.description}
+              coverImage={session.coverImage}
+              coverAlt={session.coverAlt}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section children">
+    <div class="container children__inner">
+      <div class="children__media">
+        <ImageFrame
+          src={studioImage}
+          alt="Niña jugando relajada durante una sesión en un espacio cálido y acogedor"
+          loading="lazy"
+          sizes="(min-width: 768px) 45vw, 90vw"
+          class="children__image"
+        />
+      </div>
+      <div class="children__text">
+        <SectionTitle as="h2" eyebrow="Con los peques">Que se sientan como en casa</SectionTitle>
+        <p>
+          Las sesiones con niños buscan que estén cómodos y se comporten con total
+          naturalidad. Sin prisas ni poses imposibles: jugamos, exploramos y dejamos que
+          las fotos surjan solas.
+        </p>
+        <p>
+          Cuento con un estudio privado con zona de juego y una gran cama elástica que
+          ayuda a los peques a relajarse y divertirse antes y durante la sesión. Es parte
+          de la experiencia, un lugar pensado para que la infancia se sienta libre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section portfolio">
+    <div class="container">
+      <SectionTitle as="h2" eyebrow="Portfolio" align="center">Una selección de recuerdos</SectionTitle>
+      <p class="portfolio__intro">
+        Momentos naturales de familias de Castellón y alrededores.
+      </p>
+      <Gallery images={portfolioImages} />
+    </div>
+  </section>
+
+  <section class="section instagram">
+    <div class="container">
+      <SectionTitle as="h2" eyebrow="Instagram" align="center">Día a día en el estudio</SectionTitle>
+      <p class="instagram__intro">
+        Comparto mi trabajo y el detrás de cámaras en Instagram.
+      </p>
+      <ul class="instagram__feed">
+        {
+          feedImages.map((image) => (
+            <li class="instagram__item">
+              <ImageFrame
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                sizes="(min-width: 768px) 30vw, 45vw"
+                class="instagram__image"
+              />
+            </li>
+          ))
+        }
+      </ul>
+      <div class="instagram__cta">
+        <InstagramCTA label="Sígueme en Instagram" variant="primary" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact">
+    <div class="container contact__inner">
+      <SectionTitle as="h2" align="center">Reserva tu sesión</SectionTitle>
+      <p class="contact__text">
+        Contadme qué tipo de sesión os gustaría y cómo es vuestra familia. Estaré encantada
+        de ayudaros a conservar vuestros recuerdos en Castellón y alrededores.
+      </p>
+      <div class="contact__actions">
+        <WhatsAppCTA label="Hablemos por WhatsApp" variant="primary" />
+        <InstagramCTA label="Instagram" variant="secondary" />
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .section {
+    padding-block: var(--space-2xl);
+  }
+
+  .presentation__inner,
+  .children__inner {
+    display: grid;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .presentation__text p,
+  .children__text p {
+    margin-block: var(--space-sm) 0;
+    max-width: 56ch;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  .presentation__cta {
+    margin-block-start: var(--space-md);
+  }
+
+  .link-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding-inline: var(--space-md);
+    padding-block: var(--space-2xs);
+    border-radius: 999px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .link-cta:hover,
+  .link-cta:focus-visible {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .sessions__intro,
+  .portfolio__intro,
+  .instagram__intro {
+    margin-block: var(--space-sm) var(--space-lg);
+    max-width: 60ch;
+    margin-inline: auto;
+    text-align: center;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .sessions__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .instagram__feed {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs);
+  }
+
+  .instagram__item {
+    margin: 0;
+  }
+
+  .instagram__image :global(.image-frame),
+  .instagram__image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .instagram__cta,
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-block-start: var(--space-lg);
+  }
+
+  .contact__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact__text {
+    margin-block: var(--space-sm) 0;
+    max-width: 52ch;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  @media (min-width: 768px) {
+    .presentation__inner,
+    .children__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .children__media {
+      order: 1;
+    }
+
+    .sessions__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .instagram__feed {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sessions__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

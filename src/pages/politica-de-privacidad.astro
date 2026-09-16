@@ -1,0 +1,141 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const title = 'Política de privacidad · Sandra Cabedo Fotografía';
+const description =
+  'Política de privacidad de Sandra Cabedo Fotografía, fotografía familiar en Castellón y alrededores.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path="/politica-de-privacidad/"
+  activePath="/politica-de-privacidad/"
+>
+  <section class="section">
+  <div class="container-narrow legal">
+    <SectionTitle as="h1">Política de privacidad</SectionTitle>
+      <p>
+        En Sandra Cabedo Fotografía respetamos tu privacidad y tratamos tus datos
+        personales de acuerdo con la normativa vigente en materia de protección
+        de datos.
+      </p>
+
+      <h2>Responsable del tratamiento</h2>
+      <ul>
+        <li><strong>Responsable:</strong> Sandra Cabedo [apellidos]</li>
+        <li><strong>Nombre comercial:</strong> Sandra Cabedo Fotografía</li>
+        <li><strong>NIF:</strong> [NIF]</li>
+        <li><strong>Correo electrónico:</strong> sandracabedofotografia@gmail.com</li>
+      </ul>
+
+      <h2>Datos tratados a través de este sitio web</h2>
+      <p>
+        Este sitio web no dispone de formularios de contacto, sistemas de registro
+        ni cuentas de usuario, por lo que no solicita directamente datos personales
+        a través de la web.
+      </p>
+
+      <p>
+        Si decides contactar con Sandra Cabedo Fotografía mediante los enlaces a
+        WhatsApp o Instagram, la comunicación se realizará a través de dichas
+        plataformas y estará sujeta también a sus respectivas condiciones y
+        políticas de privacidad.
+      </p>
+
+      <h2>Datos facilitados al contactar</h2>
+      <p>
+        Cuando contactes con Sandra Cabedo Fotografía, podrán tratarse los datos
+        que facilites voluntariamente durante la comunicación, como tu nombre,
+        datos de contacto y la información necesaria para atender tu consulta,
+        facilitar información sobre las sesiones o gestionar la contratación y
+        realización de los servicios solicitados.
+      </p>
+
+      <h2>Finalidad del tratamiento</h2>
+      <p>
+        Los datos facilitados se utilizarán exclusivamente para atender consultas,
+        proporcionar información sobre los servicios, gestionar solicitudes y
+        reservas y, cuando corresponda, gestionar la relación profesional derivada
+        de la contratación de una sesión fotográfica.
+      </p>
+
+      <h2>Base jurídica</h2>
+      <p>
+        El tratamiento de los datos se basa, según corresponda, en el consentimiento
+        de la persona interesada al realizar una consulta o en la aplicación de
+        medidas precontractuales y la ejecución de la relación contractual cuando
+        se solicita o contrata un servicio.
+      </p>
+
+      <h2>Conservación de los datos</h2>
+      <p>
+        Los datos personales se conservarán únicamente durante el tiempo necesario
+        para atender la finalidad para la que fueron facilitados y, cuando exista
+        una relación contractual, durante los plazos exigidos por la normativa
+        aplicable.
+      </p>
+
+      <h2>Comunicación de datos</h2>
+      <p>
+        Los datos personales no se comunicarán a terceros salvo cuando sea
+        necesario para prestar el servicio, exista una obligación legal o la
+        persona interesada lo haya autorizado.
+      </p>
+
+      <h2>Derechos</h2>
+      <p>
+        Puedes solicitar el acceso a tus datos personales, su rectificación o
+        supresión, así como ejercer los derechos de oposición, limitación del
+        tratamiento y portabilidad cuando resulten aplicables.
+      </p>
+
+      <p>
+        Para ejercer estos derechos puedes dirigirte a
+        <strong>sandracabedofotografia@gmail.com</strong>, indicando tu solicitud y la
+        información necesaria para poder identificarte.
+      </p>
+
+      <p>
+        Asimismo, tienes derecho a presentar una reclamación ante la Agencia
+        Española de Protección de Datos si consideras que el tratamiento de tus
+        datos personales no se ajusta a la normativa aplicable.
+      </p>
+
+      <h2>Servicios de terceros</h2>
+      <p>
+        Este sitio web puede contener enlaces a servicios externos como WhatsApp
+        e Instagram. Al acceder a ellos, el tratamiento de datos realizado por
+        dichas plataformas se regirá por sus propias políticas de privacidad.
+      </p>
+
+      <p class="legal__updated">
+        Última actualización: septiembre de 2026.
+      </p>
+      ```
+
+        </div>
+      </section>
+
+</PageLayout>
+
+<style>
+  .legal :global(.section-title) {
+    margin-bottom: var(--space-md);
+  }
+
+  .legal__notice {
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .legal h2 {
+    font-family: var(--font-title);
+    margin-block: var(--space-lg) var(--space-2xs);
+  }
+
+  .legal p {
+    margin-block: 0 var(--space-sm);
+  }
+</style>

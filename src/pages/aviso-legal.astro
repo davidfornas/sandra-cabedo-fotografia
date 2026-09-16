@@ -1,0 +1,101 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { withBase } from '../lib/url';
+
+const title = 'Aviso legal · Sandra Cabedo Fotografía';
+const description =
+  'Aviso legal de Sandra Cabedo Fotografía, fotografía familiar en Castellón y alrededores.';
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  path="/aviso-legal/"
+  activePath="/aviso-legal/"
+>
+  <section class="section">
+    <div class="container-narrow legal">
+      <SectionTitle as="h1">Aviso legal</SectionTitle>
+
+        <h2>Titular del sitio web</h2>
+        <p>
+          En cumplimiento de lo establecido en la Ley 34/2002, de 11 de julio, de
+          servicios de la sociedad de la información y de comercio electrónico, se
+          informa de los siguientes datos:
+        </p>
+
+        <ul>
+          <li><strong>Titular:</strong> Sandra Cabedo [apellidos]</li>
+          <li><strong>Nombre comercial:</strong> Sandra Cabedo Fotografía</li>
+          <li><strong>NIF:</strong> [NIF]</li>
+          <li><strong>Domicilio:</strong> [domicilio legal]</li>
+          <li><strong>Correo electrónico:</strong> sandracabedofotografia@gmail.com</li>
+        </ul>
+
+        <h2>Objeto</h2>
+        <p>
+          Este sitio web tiene como finalidad informar sobre los servicios de fotografía
+          ofrecidos por Sandra Cabedo Fotografía y facilitar el contacto de las personas
+          interesadas en contratar una sesión.
+        </p>
+
+        <h2>Propiedad intelectual</h2>
+        <p>
+          Las fotografías, textos, logotipos, diseños y demás contenidos de este sitio
+          web están protegidos por la normativa sobre propiedad intelectual e industrial.
+          No está permitida su reproducción, distribución, modificación o utilización
+          sin la autorización correspondiente.
+        </p>
+
+        <h2>Responsabilidad y enlaces externos</h2>
+        <p>
+          Sandra Cabedo Fotografía procura mantener la información de este sitio web
+          actualizada y correcta, aunque no puede garantizar la ausencia de errores ni
+          la disponibilidad permanente del servicio.
+        </p>
+
+        <p>
+          Este sitio puede incluir enlaces a servicios de terceros, como Instagram o
+          WhatsApp. El acceso a dichos servicios queda sujeto a sus propias condiciones
+          y políticas.
+        </p>
+
+        <h2>Protección de datos</h2>
+        <p>
+          La información relativa al tratamiento de datos personales puede consultarse
+          en nuestra <a href={withBase('/politica-de-privacidad/')}>Política de privacidad</a>.
+        </p>
+
+        <h2>Legislación aplicable</h2>
+        <p>
+          Este sitio web se rige por la legislación española.
+        </p>
+
+        <p class="legal__updated">
+          Última actualización: septiembre de 2026.
+        </p>
+
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .legal :global(.section-title) {
+    margin-bottom: var(--space-md);
+  }
+
+  .legal__notice {
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .legal h2 {
+    font-family: var(--font-title);
+    margin-block: var(--space-lg) var(--space-2xs);
+  }
+
+  .legal p {
+    margin-block: 0 var(--space-sm);
+  }
+</style>

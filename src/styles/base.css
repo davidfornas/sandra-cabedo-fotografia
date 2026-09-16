@@ -1,0 +1,229 @@
+/*
+  Base global styles for Sandra Cabedo Fotografía.
+
+  Mobile-first: every rule here targets the smallest supported viewport
+  (320px) and is progressively enhanced with min-width media queries in
+  utilities.css. This file owns the reset, element/typography defaults,
+  focus visibility, the skip link, and reduced-motion handling. It consumes
+  the custom properties defined in tokens.css, so tokens.css must be imported
+  before this file.
+
+  --- Typography & Core Web Vitals (Req 1.5, 17.5) ---
+
+  The two families (--font-title / --font-body in tokens.css) currently render
+  through their system-fallback stacks (serif for titles, sans-serif for body),
+  so there is no render-blocking font request and text is always visible (no
+  FOIT), which protects LCP and CLS.
+
+  To move to self-hosted web fonts later: drop matching woff2 files under
+  `public/fonts/`, add @font-face rules here (with font-display: swap) pointing
+  at those files, put the family names first in the tokens.css stacks, and
+  preload the above-the-fold weights from BaseLayout.astro's <head> using the
+  base-safe withBase() helper so they resolve under the site subpath.
+*/
+
+/* --- Modern minimal reset (mobile-first, from 320px) --- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Media defaults: block-level, never overflow their container, keep aspect
+   ratio when only one dimension is constrained (helps avoid layout shift). */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Forms inherit type so the two families propagate everywhere. */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* Long words break instead of forcing horizontal scroll on narrow screens. */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* --- Base element & typography defaults --- */
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 4.5vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+}
+
+/* h4-h6 stay on the body family so the editorial serif is reserved for the
+   top three levels (Req 1.5). */
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+p {
+  max-width: 65ch;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--color-accent-strong);
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+/* --- Accessibility: visible focus (Req 17.2) --- */
+
+/* Remove the default outline only where we replace it with a clearer one. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --- Skip link: visually hidden until focused (Req 17.2) --- */
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: 1000;
+  padding: var(--space-2xs) var(--space-sm);
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  color: var(--color-bg);
+  background-color: var(--color-accent-strong);
+  border-radius: 4px;
+  text-decoration: none;
+  /* Pulled off-screen until it receives focus. */
+  transform: translateY(-150%);
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-offset: 2px;
+}
+
+/* Reusable screen-reader-only helper for visually hidden text that must stay
+   in the accessibility tree. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Reduced motion (Req 17.4) --- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

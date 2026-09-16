@@ -1,0 +1,989 @@
+{
+  "pbtResults": {
+    "2.7 Write property test for WhatsApp URL round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1789568087650
+    },
+    "15.4 Write property test for per-page SEO head completeness": {
+      "status": "failed",
+      "failingExample": "Counterexample (fast-check, seed -406115288, path \"0:0\", shrunk 1x):\n[\"dist\\\\aviso-legal\\\\index.html\"]\n\nAssertionError: canonical \"https://sandra-cabedo.github.io/aviso-legal/\" starts with base-safe prefix \"https://sandra-cabedo.github.io/sandra-cabedo-fotografia/\": expected false to be true.\n\nAll 10 built pages emit canonical (and og:url) URLs that OMIT the configured base \"/sandra-cabedo-fotografia/\". Built <head> contains:\n  <link rel=\"canonical\" href=\"https://sandra-cabedo.github.io/aviso-legal/\">\n  <meta property=\"og:url\" content=\"https://sandra-cabedo.github.io/aviso-legal/\">\nExpected: https://sandra-cabedo.github.io/sandra-cabedo-fotografia/aviso-legal/\n\ntitle, meta description, and OG tags (og:title/og:description/og:url/og:type) are all present and non-empty; the only failing assertion is the base-safe canonical prefix. Root cause appears to be Seo.astro -> absoluteUrl -> withBase reading import.meta.env.BASE_URL as \"/\" at build time, dropping the base. This is a code bug (Requirement 16.1: canonical must be an absolute base-safe URL), not a test defect.",
+      "lastRunTimestamp": 1789570546798
+    }
+  },
+  "executionHistory": {
+    "1. Scaffold the Astro project and dependencies": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564729929
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564743023
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566765482
+      }
+    ],
+    "2.1 Create `astro.config.mjs` as the single source of deployment identity": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731216
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566771137
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566887523
+      }
+    ],
+    "2.2 Create `src/config/site.ts` (brand/nav/WhatsApp/Instagram config)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731373
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566772633
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566888893
+      }
+    ],
+    "2.3 Implement `src/lib/url.ts` (base-safe link/asset helpers)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731456
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566896857
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567022843
+      }
+    ],
+    "2.4 Implement `src/lib/whatsapp.ts` (WhatsApp URL builder + guard)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731533
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566898282
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567020076
+      }
+    ],
+    "2.5 Implement `src/lib/nav.ts` (exactly the eight nav items)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731612
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566899720
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567024297
+      }
+    ],
+    "3.1 Create `src/styles/tokens.css` (warm palette + typography tokens)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731707
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566773581
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566891619
+      }
+    ],
+    "3.2 Create `src/styles/base.css` (reset, elements, typography, a11y)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731791
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566901347
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567025708
+      }
+    ],
+    "3.3 Create `src/styles/utilities.css` (layout helpers)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564731871
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567026852
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567877235
+      }
+    ],
+    "4.1 Define the sessions content collection schema": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732027
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789566902038
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567021458
+      }
+    ],
+    "4.2 Wire mock placeholders and author the five session entries": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732127
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567035820
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567876366
+      }
+    ],
+    "5.1 Implement `Seo.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732201
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567037187
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567873625
+      }
+    ],
+    "5.2 Implement `BaseLayout.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732278
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568129241
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568246529
+      }
+    ],
+    "5.3 Implement `PageLayout.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732370
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568348255
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568673374
+      }
+    ],
+    "6.1 Implement `SectionTitle.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732452
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568130208
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568242765
+      }
+    ],
+    "6.2 Implement `Header.astro` (logo + nav + active state)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732527
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568350502
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568669505
+      }
+    ],
+    "6.3 Implement `Footer.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732601
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568351083
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568671850
+      }
+    ],
+    "6.4 Implement `WhatsAppCTA.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732691
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568131666
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568244169
+      }
+    ],
+    "6.5 Implement `InstagramCTA.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732767
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568133074
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568245571
+      }
+    ],
+    "6.6 Implement `Hero.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732847
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568352474
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568668154
+      }
+    ],
+    "6.7 Implement `SessionCard.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564732941
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568353362
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568670459
+      }
+    ],
+    "6.8 Implement `Gallery.astro` (editorial masonry)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733066
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568674414
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568892081
+      }
+    ],
+    "7.1 Implement `src/scripts/nav-toggle.ts`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733176
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568134153
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568247917
+      }
+    ],
+    "7.2 Implement `src/scripts/lightbox.ts`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733250
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568249138
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568343086
+      }
+    ],
+    "8.1 Add image load-failure fallback": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733334
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567038220
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567874934
+      }
+    ],
+    "9. Home page (index.astro)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733411
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569077426
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569636188
+      }
+    ],
+    "10.1 Implement the five session pages (newborn, familia, crecer-juntos, embarazo)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733494
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569078780
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569637941
+      }
+    ],
+    "11.1 Implement `sobre-mi.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733566
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569080618
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569638940
+      }
+    ],
+    "11.2 Implement `contacto.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733644
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569081550
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569640281
+      }
+    ],
+    "11.3 Implement `aviso-legal.astro` and `politica-de-privacidad.astro`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733735
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569082765
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569641594
+      }
+    ],
+    "12. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733822
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571461890
+      }
+    ],
+    "13.1 Add `public/robots.txt` and confirm sitemap generation": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733899
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569649653
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569965461
+      }
+    ],
+    "13.2 Apply per-page SEO metadata across all ten pages": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564733982
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569651096
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569966862
+      }
+    ],
+    "14.1 Implement the `dist/` link-check script": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564734081
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569652560
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569971173
+      }
+    ],
+    "16.1 Create `.github/workflows/deploy.yml`": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564734173
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569648251
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569968245
+      }
+    ],
+    "17.1 Write the README Deployment section": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564734250
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569653330
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569969214
+      }
+    ],
+    "18.1 Run `npm run build` and the link check; fix all relevant errors/warnings": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564734327
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569978241
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789570164757
+      }
+    ],
+    "19. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789564734425
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571462977
+      }
+    ],
+    "2. Base-safe configuration and pure helper layer": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567024413
+      }
+    ],
+    "8. Image fallback error handling": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567875061
+      }
+    ],
+    "4. Content collection schema and session entries": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567876485
+      }
+    ],
+    "3. Design tokens and global styles": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567877371
+      }
+    ],
+    "2.6 Write property test for base-safe URLs": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567925827
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567963562
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568119568
+      }
+    ],
+    "2.7 Write property test for WhatsApp URL round trip": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567927113
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567964923
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568120967
+      }
+    ],
+    "2.8 Write property test for the WhatsApp disabled path": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567928532
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567966256
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568121923
+      }
+    ],
+    "3.4 Write token/example tests (contrast, luminance, saturation, touch, responsive, reduced motion)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567929948
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567967429
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568123404
+      }
+    ],
+    "6.9 Write WhatsApp label constraint unit test": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567940135
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568898189
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569070088
+      }
+    ],
+    "7.3 Write interaction tests for lightbox and mobile menu": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567941025
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568899442
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569071490
+      }
+    ],
+    "8.2 Write image fallback unit test": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567942476
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568900398
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569072308
+      }
+    ],
+    "15.1 Write property test for no hardcoded base/phone literals": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567943927
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569979213
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571155891
+      }
+    ],
+    "15.2 Write property test for rendered image integrity": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567945302
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569980613
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571156844
+      }
+    ],
+    "15.3 Write property test for navigation completeness": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567946670
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569982046
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571158241
+      }
+    ],
+    "15.4 Write property test for per-page SEO head completeness": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567947619
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569983120
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571159649
+      }
+    ],
+    "15.5 Write property test for valid heading hierarchy": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567949105
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571160536
+      }
+    ],
+    "15.6 Write axe-core accessibility checks": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567950502
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571170992
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571365309
+      }
+    ],
+    "18.2 Run the full test suite and confirm green": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789567951652
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571366404
+      },
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571455936
+      }
+    ],
+    "7. Interaction scripts (progressive enhancement)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568343272
+      }
+    ],
+    "5. Layouts and SEO head": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568673567
+      }
+    ],
+    "6. Reusable components": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789568892226
+      }
+    ],
+    "10. Session pages": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569638126
+      }
+    ],
+    "11. Sobre mí, Contacto, and legal pages": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569641763
+      }
+    ],
+    "13. SEO assets, robots, and sitemap": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569967018
+      }
+    ],
+    "16. GitHub Actions deployment workflow": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569968381
+      }
+    ],
+    "17. Documentation": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569969357
+      }
+    ],
+    "14. Build-time link checking (broken/base-omitting links)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789569971290
+      }
+    ],
+    "18. Final wiring and build verification": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789570164931
+      }
+    ],
+    "15. Universal page-invariant property tests (over built pages)": [
+      {
+        "executionId": "26dd5ff4-97de-420e-9008-570e2cad1316",
+        "chatSessionId": "sess_713c35f9-9865-49e2-828c-96b94367b66e",
+        "timestamp": 1789571156100
+      }
+    ]
+  }
+}

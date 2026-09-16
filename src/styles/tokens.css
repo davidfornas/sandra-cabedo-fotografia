@@ -1,0 +1,57 @@
+/*
+  Design tokens for Sandra Cabedo Fotografía.
+
+  The visual system is intentionally quiet so photographs carry the emotional
+  weight. Colors are warm and luminous; type pairs one editorial serif for
+  titles with one light sans-serif for everything else.
+
+  Color rationale (sRGB relative luminance L per WCAG 2.x, contrast against
+  the page background --color-bg = #FAF7F2, L = 0.933):
+
+    --color-bg            #FAF7F2  L = 0.933  -> 93.3% luminance (>= 90%)
+    --color-text          #2B2622  L = 0.019  -> contrast 14.2:1  (>= 4.5:1)
+    --color-text-secondary#6B625A  L = 0.125  -> contrast  5.6:1  (>= 4.5:1)
+    --color-accent        #9A5F3B  L = 0.154  -> contrast  4.8:1 as link text,
+                                                 5.2:1 for white text on the
+                                                 accent fill (both >= 4.5:1)
+
+  Secondary surfaces are soft beige/sand tints. Their channel spread is kept
+  small so the perceived (HSV) saturation stays low:
+    --color-surface       #EFE9E0  HSV saturation ~ 6%   (<= 20%)
+    --color-surface-2      #E8DFD2  HSV saturation ~ 10%  (<= 20%)
+*/
+
+:root {
+  /* --- Palette --- */
+  --color-bg: #FAF7F2;
+  --color-surface: #EFE9E0;
+  --color-surface-2: #E8DFD2;
+
+  --color-text: #2B2622;
+  --color-text-secondary: #6B625A;
+
+  --color-accent: #9A5F3B;
+  --color-accent-strong: #83502F;
+
+  /* --- Typography families (Req 1.5) --- */
+  --font-title: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  /* --- Spacing scale --- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* --- Whitespace: side margin >= 10% of the visible area (Req 1.6) --- */
+  --layout-side-margin: 10vw;
+  --layout-content-max: 1200px;
+
+  /* --- Interaction sizing (Req 2.7) --- */
+  --touch-min: 44px;
+  --touch-gap: 8px;
+}

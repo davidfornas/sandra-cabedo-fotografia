@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sandra-cabedo.github.io/sandra-cabedo-fotografia/sitemap-index.xml

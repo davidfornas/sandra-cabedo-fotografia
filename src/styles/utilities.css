@@ -1,0 +1,219 @@
+/*
+  Layout utilities for Sandra Cabedo Fotografía.
+
+  Mobile-first: base rules target the smallest supported viewport (320px) and
+  are progressively enhanced through min-width media queries at the tablet
+  (768px) and desktop (1024px) breakpoints. Everything here consumes the
+  custom properties from tokens.css, so tokens.css must be imported first.
+
+  Breakpoints (Req 2.2-2.4):
+    base   320-767px  single column
+    tablet 768-1023px two columns
+    desktop >= 1024px  three+ columns / wider content
+
+  No rule may introduce horizontal overflow: widths are bounded to the
+  container, grids fall back to a single column, and the side padding is
+  always >= 10% of the viewport (Req 1.6, 2.2-2.4).
+*/
+
+/* --- Breakpoint reference (used by the media queries below) ---
+   --bp-tablet:  768px
+   --bp-desktop: 1024px
+   Kept inline as literals in @media because custom properties are not
+   permitted in media feature queries. */
+
+/* --- Container: centered, capped width, side whitespace >= 10vw (Req 1.6) --- */
+
+.container {
+  width: 100%;
+  max-width: var(--layout-content-max);
+  margin-inline: auto;
+  /* Side padding is the larger of the 10vw whitespace rule and a small floor
+     so content never touches the edge on very narrow screens. The min() caps
+     it so the usable width cannot collapse on mid-size viewports. */
+  padding-inline: min(var(--layout-side-margin), var(--space-lg));
+}
+
+/* On wide screens the fixed max-width already provides generous side
+   whitespace, so the padding can relax to a comfortable gutter. */
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-lg);
+  }
+}
+
+/* A narrower reading measure for text-heavy blocks (legal pages, intros). */
+.container-narrow {
+  width: 100%;
+  max-width: 68ch;
+  margin-inline: auto;
+  padding-inline: min(var(--layout-side-margin), var(--space-lg));
+}
+
+/* --- Section: vertical rhythm between page blocks --- */
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-2xl);
+  }
+}
+
+/* Tighter variant for closely related consecutive blocks. */
+.section-tight {
+  padding-block: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .section-tight {
+    padding-block: var(--space-xl);
+  }
+}
+
+/* --- Grid helpers: single column base, 2-up at tablet, 3-up at desktop ---
+
+   The base is a single column so content stacks with no horizontal overflow
+   on phones (Req 2.2). `minmax(0, 1fr)` lets tracks shrink below their
+   content size, which prevents wide children (images, long words) from
+   forcing the grid wider than the viewport. */
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    gap: var(--space-lg);
+  }
+}
+
+/* Two columns from the tablet breakpoint onward. */
+.grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+/* Single column on phones, two on tablet, three on desktop. */
+.grid-3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Auto-fitting grid for card collections: as many columns as fit while each
+   track keeps a sensible minimum, collapsing to one column when the viewport
+   is too narrow for even a single min-width track. */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .grid-auto {
+    gap: var(--space-lg);
+  }
+}
+
+/* --- Overflow guards ---
+   Belt-and-braces against accidental horizontal scrolling (Req 2.2-2.4). */
+
+.no-overflow {
+  overflow-x: hidden;
+}
+
+.full-bleed {
+  /* Break out of the container to span the full viewport width without
+     causing overflow: the negative margins are matched by the width. */
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+/* --- Touch targets: >= 44x44px with >= 8px spacing (Req 2.7) --- */
+
+/* Apply to any interactive element (link, button, toggle) that must meet the
+   minimum touch area. Uses inline-flex so short-label controls still fill the
+   required box and center their content. */
+.touch-target {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+}
+
+/* Groups of adjacent touch controls keep at least the minimum separation so
+   neighbouring targets are not mis-tapped. `flex-wrap` prevents overflow when
+   the row is wider than the viewport. */
+.touch-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--touch-gap);
+}
+
+.touch-row > * {
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+}
+
+/* Vertical stacks of touch controls (e.g. mobile menu items). */
+.touch-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--touch-gap);
+}
+
+.touch-stack > * {
+  min-height: var(--touch-min);
+}
+
+/* --- Small layout conveniences --- */
+
+.flow > * + * {
+  margin-block-start: var(--space-md);
+}
+
+.center-text {
+  text-align: center;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}

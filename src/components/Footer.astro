@@ -1,0 +1,111 @@
+---
+import { site } from '../config/site';
+import { withBase } from '../lib/url';
+import WhatsAppCTA from './WhatsAppCTA.astro';
+import InstagramCTA from './InstagramCTA.astro';
+
+const currentYear = new Date().getFullYear();
+
+const legalLinks = [
+  { label: 'Aviso legal', href: withBase('/aviso-legal/') },
+  { label: 'Política de privacidad', href: withBase('/politica-de-privacidad/') },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{site.brand.name}</p>
+      <p class="site-footer__tagline">{site.brand.tagline}</p>
+    </div>
+
+    <div class="site-footer__social">
+      <InstagramCTA label="Instagram" variant="secondary" />
+      <WhatsAppCTA label="Hablemos" variant="secondary" />
+    </div>
+
+    <nav class="site-footer__legal" aria-label="Enlaces legales">
+      <ul>
+        {
+          legalLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <p class="site-footer__copyright">
+      © {currentYear} {site.brand.name}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-2xl);
+    padding-block: var(--space-xl);
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-surface-2);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__name {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .site-footer__tagline {
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    margin: var(--space-3xs) 0 0;
+  }
+
+  .site-footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+
+  .site-footer__legal ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer__legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .site-footer__legal a:hover,
+  .site-footer__legal a:focus-visible {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
+  }
+
+  .site-footer__copyright {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+</style>

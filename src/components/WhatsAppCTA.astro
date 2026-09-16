@@ -1,0 +1,95 @@
+---
+import { whatsappUrl } from '../lib/whatsapp';
+
+export type WhatsAppLabel = 'Reserva tu sesión' | 'Hablemos' | 'Consultar disponibilidad' | 'Hablemos por WhatsApp';
+
+interface Props {
+  label: WhatsAppLabel;
+  variant?: 'primary' | 'secondary';
+}
+
+const { label, variant = 'primary' } = Astro.props;
+
+const url = whatsappUrl();
+const enabled = url !== null;
+---
+
+{
+  enabled ? (
+    <a
+      class:list={['whatsapp-cta', `whatsapp-cta--${variant}`, 'touch-target']}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {label}
+    </a>
+  ) : (
+    <span
+      class:list={['whatsapp-cta', `whatsapp-cta--${variant}`, 'whatsapp-cta--disabled', 'touch-target']}
+      role="link"
+      aria-disabled="true"
+      tabindex="-1"
+    >
+      {label}
+    </span>
+  )
+}
+
+<style>
+  .whatsapp-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding-inline: var(--space-md);
+    padding-block: var(--space-2xs);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+  }
+
+  .whatsapp-cta--primary {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border: 1px solid var(--color-accent);
+  }
+
+  .whatsapp-cta--primary:hover,
+  .whatsapp-cta--primary:focus-visible {
+    background-color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+  }
+
+  .whatsapp-cta--secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+  }
+
+  .whatsapp-cta--secondary:hover,
+  .whatsapp-cta--secondary:focus-visible {
+    background-color: var(--color-surface);
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+  }
+
+  .whatsapp-cta--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-cta {
+      transition: none;
+    }
+  }
+</style>

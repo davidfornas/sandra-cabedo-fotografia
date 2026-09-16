@@ -1,0 +1,28 @@
+{
+  "name": "sandra-cabedo-fotografia",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sitio estático de fotografía de Sandra Cabedo (Castellón), construido con Astro.",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "check:links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^5.18.2"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "fast-check": "^3.23.2",
+    "happy-dom": "^20.14.5",
+    "node-html-parser": "^9.0.4",
+    "vitest": "^3.2.7"
+  }
+}

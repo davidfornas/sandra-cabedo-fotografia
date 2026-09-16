@@ -1,0 +1,103 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import ImageFrame from '../components/ImageFrame.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import { site } from '../config/site';
+import portrait from '../images/mocks/mock-11.jpg';
+
+const seo = {
+  title: 'Sobre mí · Sandra Cabedo Fotografía',
+  description:
+    'Conoce a Sandra Cabedo, fotógrafa familiar en Castellón y alrededores. Fotografía natural que conserva vuestros recuerdos con cercanía y sensibilidad.',
+  path: '/sobre-mi/',
+};
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  path={seo.path}
+  activePath="/sobre-mi/"
+>
+  <section class="about section">
+    <div class="about__grid container">
+      <div class="about__media">
+        <ImageFrame
+          src={portrait}
+          alt="Retrato de Sandra Cabedo, fotógrafa familiar en Castellón"
+          width={800}
+          height={1200}
+          loading="eager"
+          sizes="(min-width: 1024px) 40vw, 90vw"
+          class="about__portrait"
+        />
+      </div>
+
+      <div class="about__body">
+        <SectionTitle as="h1" eyebrow="Conóceme">Sobre mí</SectionTitle>
+
+        <p class="about__lead">
+          Soy Sandra, y me dedico a la fotografía familiar en {site.brand.locationLabel}.
+          Me gusta acompañaros con calma, sin prisas ni poses forzadas, para que cada
+          imagen refleje cómo sois de verdad: vuestros gestos, vuestras risas y esos
+          instantes cotidianos que merecen quedarse para siempre.
+        </p>
+
+        <p class="about__text">
+          Trabajo con luz natural y un estilo cercano, buscando que os sintáis cómodos
+          y que los peques disfruten del momento. Más que una sesión, me gusta pensar
+          que creamos un recuerdo de vuestra historia tal y como la vivís.
+        </p>
+
+        <p class="about__note">
+          Texto provisional de demostración. La biografía definitiva de Sandra se
+          incorporará con el contenido real del proyecto.
+        </p>
+
+        <div class="about__cta">
+          <WhatsAppCTA label="Hablemos" variant="primary" />
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .about__grid {
+    display: grid;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .about__portrait {
+    border-radius: var(--radius-md, 8px);
+  }
+
+  .about__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .about__lead {
+    font-size: 1.125rem;
+  }
+
+  .about__note {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  .about__cta {
+    margin-top: var(--space-2xs);
+  }
+
+  @media (min-width: 1024px) {
+    .about__grid {
+      grid-template-columns: 2fr 3fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { SeoProps } from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface PageLayoutProps extends SeoProps {
+  activePath: string;
+}
+
+const { title, description, path, ogImage, activePath } = Astro.props as PageLayoutProps;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogImage={ogImage}
+  activePath={activePath}
+>
+  <Header activePath={activePath} />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>
