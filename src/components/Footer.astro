@@ -3,6 +3,8 @@ import { site } from '../config/site';
 import { withBase } from '../lib/url';
 import WhatsAppCTA from './WhatsAppCTA.astro';
 import InstagramCTA from './InstagramCTA.astro';
+import { Image } from 'astro:assets';
+import logo from '../images/logo.jpg';
 
 const currentYear = new Date().getFullYear();
 
@@ -14,6 +16,8 @@ const legalLinks = [
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
+    <Image class="site-footer__logo" src={logo} alt="Sandra Cabedo Fotografía" width={280} height={198} loading="lazy" />
+
     <div class="site-footer__brand">
       <p class="site-footer__name">{site.brand.name}</p>
       <p class="site-footer__tagline">{site.brand.tagline}</p>
@@ -58,6 +62,12 @@ const legalLinks = [
     text-align: center;
   }
 
+  .site-footer__logo {
+    width: auto;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: var(--space-sm);
+  }
   .site-footer__name {
     font-family: var(--font-title);
     font-size: 1.25rem;
