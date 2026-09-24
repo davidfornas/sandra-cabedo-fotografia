@@ -22,7 +22,7 @@ if (!entry) {
   throw new Error(`No se encontró la entrada de sesión "${slug}".`);
 }
 
-const { title, description, images, provisional } = entry.data;
+const { title, description, images } = entry.data;
 
 const galleryImages: GalleryImage[] = images.map((image) => ({
   src: image.src,
@@ -55,21 +55,11 @@ const { Content } = await render(entry);
       <Gallery images={galleryImages} />
     </div>
 
-    <div class="container session__body">
-      <Content />
+    <div class="container">
+      <div class="session__body">
+        <Content />
+      </div>
     </div>
-
-    {
-      provisional && (
-        <div class="container">
-          <p class="session__notice" role="note">
-            Contenido e imágenes provisionales para esta demo. Las fotografías
-            que ves arriba son ejemplos que se sustituirán por el trabajo
-            definitivo de Sandra.
-          </p>
-        </div>
-      )
-    }
   </article>
 </PageLayout>
 
@@ -105,6 +95,9 @@ const { Content } = await render(entry);
   .session__body {
     max-width: 60ch;
     margin-block-end: var(--space-xl);
+    padding: var(--space-lg);
+    border-radius: 6px;
+    background-color: var(--color-surface);
     color: var(--color-text-secondary);
     font-size: 1.0625rem;
     line-height: 1.7;
@@ -118,14 +111,5 @@ const { Content } = await render(entry);
     color: var(--color-text);
     font-weight: 600;
   }
-  .session__notice {
-    max-width: 60ch;
-    margin: 0;
-    padding: var(--space-md);
-    border-radius: 6px;
-    background-color: var(--color-surface);
-    color: var(--color-text-secondary);
-    font-size: 0.9375rem;
-    line-height: 1.6;
-  }
+
 </style>
