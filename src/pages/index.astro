@@ -12,8 +12,8 @@ import { site } from '../config/site';
 import { withBase } from '../lib/url';
 import type { GalleryImage } from '../lib/gallery';
 
-import heroImage from '../images/mocks/mock-05.jpg';
-import portraitImage from '../images/mocks/mock-09.jpg';
+import heroImage from '../images/sessions/newborn/IMG_1454.jpg';
+import portraitImage from '../images/sandra/sandra.jpg';
 import studioImage from '../images/mocks/mock-14.jpg';
 
 import portfolio01 from '../images/sessions/newborn/IMG_0851.jpg';
@@ -90,7 +90,7 @@ const conoceMeHref = withBase('/sobre-mi/');
 >
   <Hero
     image={heroImage}
-    alt="Familia abrazada disfrutando de un momento natural al aire libre en Castellón"
+    alt="Padres sosteniendo a su recién nacido en un momento íntimo"
     title="Fotografías de vuestra historia"
     subtitle="Conservo los recuerdos naturales de vuestra familia y el crecer de los peques, sin poses forzadas."
   />
@@ -116,6 +116,8 @@ const conoceMeHref = withBase('/sobre-mi/');
         <ImageFrame
           src={portraitImage}
           alt="Retrato de Sandra, fotógrafa familiar en Castellón"
+          width={800}
+          height={1000}
           loading="lazy"
           sizes="(min-width: 768px) 40vw, 90vw"
           class="presentation__portrait"
