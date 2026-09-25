@@ -10,6 +10,7 @@ export interface WhatsAppConfig {
 
 export interface InstagramConfig {
   profileUrl: string;
+  dmUrl: string;
   handle: string;
 }
 
@@ -48,6 +49,7 @@ export const site: SiteConfig = {
   },
   instagram: {
     profileUrl: 'https://www.instagram.com/sandracabedofotografia/',
+    dmUrl: 'https://ig.me/m/sandracabedofotografia',
     handle: '@sandracabedofotografia',
   },
 };

@@ -3,6 +3,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import ImageFrame from '../components/ImageFrame.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import InstagramCTA from '../components/InstagramCTA.astro';
 import { site } from '../config/site';
 import portrait from '../images/mocks/mock-11.jpg';
 
@@ -57,6 +58,7 @@ const seo = {
 
         <div class="about__cta">
           <WhatsAppCTA label="Hablemos" variant="primary" />
+          <InstagramCTA label="Conóceme más" variant="secondary" />
         </div>
       </div>
     </div>
@@ -91,6 +93,9 @@ const seo = {
   }
 
   .about__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
     margin-top: var(--space-2xs);
   }
 

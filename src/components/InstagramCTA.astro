@@ -4,11 +4,12 @@ import { site } from '../config/site';
 interface Props {
   label: string;
   variant?: 'primary' | 'secondary';
+  target?: 'profile' | 'dm';
 }
 
-const { label, variant = 'primary' } = Astro.props;
+const { label, variant = 'primary', target = 'profile' } = Astro.props;
 
-const href = site.instagram.profileUrl;
+const href = target === 'dm' ? site.instagram.dmUrl : site.instagram.profileUrl;
 ---
 
 <a
