@@ -73,7 +73,8 @@ const legalLinks = [
   .site-footer__tagline {
     font-family: var(--font-body);
     color: var(--color-text-secondary);
-    margin: 0;
+    /* Pull up to offset the transparent whitespace baked into the logo PNG. */
+    margin: calc(-1 * var(--space-md)) 0 0;
   }
 
   .site-footer__social {
