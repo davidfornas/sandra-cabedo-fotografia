@@ -11,6 +11,11 @@ import { Image } from 'astro:assets';
 // import footerLogo from '../images/logos/two-typographies-logo.png';
 import footerLogo from '../images/logos/two-typographies-logo-big.png';
 
+interface Props {
+  showSocial?: boolean;
+}
+
+const { showSocial = false } = Astro.props;
 const currentYear = new Date().getFullYear();
 
 const legalLinks = [
@@ -25,10 +30,12 @@ const legalLinks = [
 
     <p class="site-footer__tagline">{site.brand.tagline}</p>
 
-    <div class="site-footer__social">
-      <InstagramCTA label="Instagram" variant="secondary" />
-      <WhatsAppCTA label="Hablemos" variant="secondary" />
-    </div>
+    {showSocial && (
+      <div class="site-footer__social">
+        <InstagramCTA label="Instagram" variant="secondary" />
+        <WhatsAppCTA label="Hablemos por WhatsApp" variant="secondary" />
+      </div>
+    )}
 
     <nav class="site-footer__legal" aria-label="Enlaces legales">
       <ul>

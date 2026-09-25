@@ -6,9 +6,10 @@ import Footer from '../components/Footer.astro';
 
 export interface PageLayoutProps extends SeoProps {
   activePath: string;
+  showFooterSocial?: boolean;
 }
 
-const { title, description, path, ogImage, activePath } = Astro.props as PageLayoutProps;
+const { title, description, path, ogImage, activePath, showFooterSocial = false } = Astro.props as PageLayoutProps;
 ---
 
 <BaseLayout
@@ -22,5 +23,5 @@ const { title, description, path, ogImage, activePath } = Astro.props as PageLay
   <main id="main">
     <slot />
   </main>
-  <Footer />
+  <Footer showSocial={showFooterSocial} />
 </BaseLayout>
