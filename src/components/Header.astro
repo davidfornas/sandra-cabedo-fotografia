@@ -5,6 +5,12 @@ import { withBase } from '../lib/url';
 import { Image } from 'astro:assets';
 import logo from '../images/logo.png';
 
+// Full-logo options for the header. Switch by commenting/uncommenting one line.
+// import headerLogo from '../images/logos/logo-handwritten.png';
+// import headerLogo from '../images/logos/logo-soft-typography.png';
+// import headerLogo from '../images/logos/two-typographies-logo.png';
+import headerLogo from '../images/logos/two-typographies-logo-big.png';
+
 interface Props {
   activePath: string;
 }
@@ -20,9 +26,16 @@ function isActive(path: string): boolean {
 
 <header class="site-header">
   <div class="container site-header__inner">
+    {/* Option B — camera icon + text wordmark (kept for reference):
     <a class="site-header__logo" href={withBase('/')}>
       <Image class="site-header__logo-icon" src={logo} alt="" width={80} height={40} loading="eager" />
       <span class="site-header__logo-text">{site.brand.name}</span>
+    </a>
+    */}
+
+    {/* Full logo (switch the file in the frontmatter import above). */}
+    <a class="site-header__logo site-header__logo--full" href={withBase('/')}>
+      <Image class="site-header__logo-full" src={headerLogo} alt={site.brand.name} width={216} height={72} loading="eager" />
     </a>
 
     <button
@@ -93,6 +106,17 @@ function isActive(path: string): boolean {
     display: block;
     width: auto;
     height: 40px;
+  }
+
+  /* Full logo (3:1). Height drives size; width auto-scales to keep ratio. */
+  .site-header__logo--full {
+    gap: 0;
+  }
+
+  .site-header__logo-full {
+    display: block;
+    width: auto;
+    height: 72px;
   }
 
   .site-header__logo:hover {

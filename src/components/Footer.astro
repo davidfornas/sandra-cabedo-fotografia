@@ -4,7 +4,12 @@ import { withBase } from '../lib/url';
 import WhatsAppCTA from './WhatsAppCTA.astro';
 import InstagramCTA from './InstagramCTA.astro';
 import { Image } from 'astro:assets';
-import logo from '../images/logo.jpg';
+
+// Full-logo options for the footer. Switch by commenting/uncommenting one line.
+// import footerLogo from '../images/logos/logo-handwritten.png';
+// import footerLogo from '../images/logos/logo-soft-typography.png';
+// import footerLogo from '../images/logos/two-typographies-logo.png';
+import footerLogo from '../images/logos/two-typographies-logo-big.png';
 
 const currentYear = new Date().getFullYear();
 
@@ -16,12 +21,9 @@ const legalLinks = [
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
-    <Image class="site-footer__logo" src={logo} alt="Sandra Cabedo Fotografía" width={280} height={198} loading="lazy" />
+    <Image class="site-footer__logo" src={footerLogo} alt="Sandra Cabedo Fotografía" width={280} height={93} loading="lazy" />
 
-    <div class="site-footer__brand">
-      <p class="site-footer__name">{site.brand.name}</p>
-      <p class="site-footer__tagline">{site.brand.tagline}</p>
-    </div>
+    <p class="site-footer__tagline">{site.brand.tagline}</p>
 
     <div class="site-footer__social">
       <InstagramCTA label="Instagram" variant="secondary" />
@@ -66,18 +68,12 @@ const legalLinks = [
     width: auto;
     max-width: 280px;
     height: auto;
-    margin-bottom: var(--space-sm);
-  }
-  .site-footer__name {
-    font-family: var(--font-title);
-    font-size: 1.25rem;
-    margin: 0;
   }
 
   .site-footer__tagline {
     font-family: var(--font-body);
     color: var(--color-text-secondary);
-    margin: var(--space-3xs) 0 0;
+    margin: 0;
   }
 
   .site-footer__social {
