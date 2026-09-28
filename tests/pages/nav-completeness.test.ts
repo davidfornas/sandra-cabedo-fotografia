@@ -75,6 +75,9 @@ function getNavLinks(html: string): HTMLElement[] {
   return menu.querySelectorAll('a.site-header__link');
 }
 
+// Standalone pages that intentionally have no site navigation.
+const STANDALONE_ROUTES = new Set(['/hola/']);
+
 let pages: BuiltPage[] = [];
 
 beforeAll(() => {
@@ -95,15 +98,16 @@ beforeAll(() => {
 }, 180_000);
 
 describe('Property 6: Navigation exposes exactly the configured sections (Req 3.2, 3.3)', () => {
-  it('every built page carries a header nav', () => {
+  it('every built page except standalone ones carries a header nav', () => {
     for (const page of pages) {
+      if (STANDALONE_ROUTES.has(page.route)) continue;
       expect(getNavLinks(page.html), `nav missing on ${page.route}`).toHaveLength(
         expectedLabels.length,
       );
     }
   });
 
-  it('all nine pages parse to the expected routes', () => {
+  it('all built pages parse to the expected routes', () => {
     const routes = pages.map((p) => p.route).sort();
     expect(routes).toEqual(
       [
@@ -113,6 +117,7 @@ describe('Property 6: Navigation exposes exactly the configured sections (Req 3.
         '/crecer-juntos/',
         '/embarazo/',
         '/familia/',
+        '/hola/',
         '/newborn/',
         '/politica-de-privacidad/',
         '/sobre-mi/',
@@ -123,6 +128,7 @@ describe('Property 6: Navigation exposes exactly the configured sections (Req 3.
   it('nav labels, order, base-safe hrefs, and active state hold for all built pages', () => {
     fc.assert(
       fc.property(fc.constantFrom(...pages), (page) => {
+        if (STANDALONE_ROUTES.has(page.route)) return;
         const links = getNavLinks(page.html);
 
         // Exactly the configured items, in order.

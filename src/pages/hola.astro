@@ -1,0 +1,412 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import InstagramCTA from '../components/InstagramCTA.astro';
+import { site } from '../config/site';
+import { withBase } from '../lib/url';
+import logo from '../images/logos/logo-handwritten.png';
+import portrait from '../images/sandra/sandra.jpg';
+
+const sessions = [
+  { label: 'Newborn',       href: withBase('/newborn/'),       id: 'newborn' },
+  { label: 'Familia',       href: withBase('/familia/'),       id: 'familia' },
+  { label: 'Embarazo',      href: withBase('/embarazo/'),      id: 'embarazo' },
+  { label: 'Crecer juntos', href: withBase('/crecer-juntos/'), id: 'crecer-juntos' },
+];
+
+const { reviewsUrl, leaveReviewUrl } = site.google;
+const hasGoogle = reviewsUrl !== '' || leaveReviewUrl !== '';
+---
+
+<BaseLayout
+  title="Sandra Cabedo Fotografía | Enlaces"
+  description="Fotografía familiar, newborn, embarazo e infancia en Castellón. Descubre las sesiones de Sandra Cabedo Fotografía o contacta por WhatsApp."
+  path="/hola/"
+  activePath="/hola/"
+>
+  <main id="main" class="hola">
+    <div class="hola__inner">
+
+      <header class="hola__header">
+        <Image
+          src={logo}
+          alt="Sandra Cabedo Fotografía"
+          width={180}
+          height={60}
+          loading="eager"
+          fetchpriority="high"
+          class="hola__logo"
+        />
+      </header>
+
+      <div class="hola__portrait-wrap" aria-hidden="true">
+        <Image
+          src={portrait}
+          alt=""
+          width={88}
+          height={88}
+          loading="eager"
+          class="hola__portrait"
+        />
+      </div>
+
+      <section class="hola__intro" aria-label="Presentación">
+        <p class="hola__intro-name">Hola, soy Sandra.</p>
+        <p class="hola__intro-text">
+          Fotografía de familia, infancia y de todos esos momentos<br class="hola__br" />
+          que merece la pena guardar.
+        </p>
+      </section>
+
+      <section class="hola__cta" aria-label="Reserva tu sesión">
+        <WhatsAppCTA label="Reserva tu sesión" variant="primary" />
+        <p class="hola__cta-hint">Hablemos por WhatsApp</p>
+      </section>
+
+      <nav class="hola__sessions" aria-label="Tipos de sesión">
+        <ul role="list" class="hola__session-list">
+          {sessions.map((s) => (
+            <li>
+              <a
+                href={s.href}
+                class="hola__session-link"
+                data-link={s.id}
+              >
+                <span>{s.label}</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06L7.28 12.78a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/>
+                </svg>
+              </a>
+            </li>
+          ))}
+          <li>
+            <span class="hola__session-link hola__session-link--soon">
+              <span>Comuniones</span>
+              <span class="hola__soon-badge">Próximamente</span>
+            </span>
+          </li>
+        </ul>
+      </nav>
+
+      {hasGoogle && (
+        <section class="hola__google" aria-label="Opiniones en Google">
+          <p class="hola__section-label">Opiniones</p>
+          <div class="hola__google-actions">
+            {reviewsUrl !== '' && (
+              <a href={reviewsUrl} class="hola__ghost-link" target="_blank" rel="noopener noreferrer" data-link="google-reviews">
+                Ver opiniones
+              </a>
+            )}
+            {leaveReviewUrl !== '' && (
+              <a href={leaveReviewUrl} class="hola__ghost-link" target="_blank" rel="noopener noreferrer" data-link="google-leave-review">
+                Deja tu opinión
+              </a>
+            )}
+          </div>
+        </section>
+      )}
+
+      <div class="hola__social" data-link="instagram">
+        <InstagramCTA label="Sígueme en Instagram" variant="secondary" />
+      </div>
+
+      <a href={withBase('/')} class="hola__website-link" data-link="main-website">
+        Visita la web
+        <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06L7.28 12.78a.75.75 0 0 1-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/>
+        </svg>
+      </a>
+
+      <footer class="hola__footer">
+        <p>{site.brand.name} · {site.brand.locationLabel}</p>
+      </footer>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .hola {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    background-color: var(--color-bg);
+  }
+
+  .hola__inner {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  /* --- Identity --- */
+
+  .hola__header {
+    display: flex;
+    justify-content: center;
+    padding-block-end: var(--space-3xs);
+  }
+
+  .hola__logo {
+    width: auto;
+    max-width: 180px;
+    height: auto;
+  }
+
+  /* --- Portrait --- */
+
+  .hola__portrait-wrap {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-surface-2);
+    flex-shrink: 0;
+  }
+
+  .hola__portrait {
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+  }
+
+  /* --- Intro --- */
+
+  .hola__intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .hola__intro-name {
+    font-family: var(--font-title);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    max-width: none;
+    margin: 0;
+  }
+
+  .hola__intro-text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+    max-width: 36ch;
+    margin: 0;
+  }
+
+  .hola__br {
+    display: none;
+  }
+
+  @media (min-width: 400px) {
+    .hola__br {
+      display: inline;
+    }
+  }
+
+  /* --- Primary CTA --- */
+
+  .hola__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2xs);
+    width: 100%;
+  }
+
+  .hola__cta :global(.whatsapp-cta) {
+    width: 100%;
+    max-width: 320px;
+    font-size: 1.0625rem;
+    padding-block: var(--space-xs);
+  }
+
+  .hola__cta-hint {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: none;
+  }
+
+  /* --- Session links --- */
+
+  .hola__sessions {
+    width: 100%;
+  }
+
+  .hola__section-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-xs);
+    max-width: none;
+  }
+
+  .hola__session-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--color-surface-2);
+  }
+
+  .hola__session-list li {
+    border-bottom: 1px solid var(--color-surface-2);
+  }
+
+  .hola__session-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--touch-min);
+    padding-inline: var(--space-sm);
+    padding-block: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text);
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  a.hola__session-link:hover,
+  a.hola__session-link:focus-visible {
+    background-color: var(--color-surface);
+    color: var(--color-accent);
+  }
+
+  .hola__session-link--soon {
+    cursor: default;
+    color: var(--color-text-secondary);
+  }
+
+  .hola__soon-badge {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface-2);
+    border-radius: 999px;
+    padding: 2px 8px;
+  }
+
+  /* --- Google reviews --- */
+
+  .hola__google {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .hola__google-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+
+  .hola__ghost-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding-inline: var(--space-md);
+    padding-block: var(--space-2xs);
+    border-radius: 999px;
+    border: 1px solid var(--color-surface-2);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .hola__ghost-link:hover,
+  .hola__ghost-link:focus-visible {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* --- Instagram --- */
+
+  .hola__social {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* --- Main website link --- */
+
+  .hola__website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    min-height: var(--touch-min);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding-block: var(--space-2xs);
+  }
+
+  .hola__website-link:hover,
+  .hola__website-link:focus-visible {
+    color: var(--color-accent);
+  }
+
+  /* --- Footer --- */
+
+  .hola__footer {
+    margin-block-start: var(--space-sm);
+    padding-block-start: var(--space-sm);
+    border-top: 1px solid var(--color-surface-2);
+    width: 100%;
+  }
+
+  .hola__footer p {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: none;
+  }
+
+  /* --- Desktop: keep it narrow and centered --- */
+
+  @media (min-width: 600px) {
+    .hola {
+      padding-block-start: var(--space-xl);
+    }
+
+    .hola__inner {
+      gap: var(--space-lg);
+    }
+
+    .hola__logo {
+      max-width: 200px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hola__session-link,
+    .hola__ghost-link,
+    .hola__website-link {
+      transition: none;
+    }
+  }
+</style>

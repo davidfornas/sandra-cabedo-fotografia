@@ -20,11 +20,17 @@ export interface BrandConfig {
   locationLabel: string;
 }
 
+export interface GoogleConfig {
+  reviewsUrl: string;
+  leaveReviewUrl: string;
+}
+
 export interface SiteConfig {
   brand: BrandConfig;
   nav: NavItem[];
   whatsapp: WhatsAppConfig;
   instagram: InstagramConfig;
+  google: GoogleConfig;
 }
 
 export const site: SiteConfig = {
@@ -51,5 +57,9 @@ export const site: SiteConfig = {
     profileUrl: 'https://www.instagram.com/sandracabedofotografia/',
     dmUrl: 'https://ig.me/m/sandracabedofotografia',
     handle: '@sandracabedofotografia',
+  },
+  google: {
+    reviewsUrl: '',
+    leaveReviewUrl: '',
   },
 };
