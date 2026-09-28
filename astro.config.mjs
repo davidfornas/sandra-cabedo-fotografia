@@ -1,13 +1,13 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// GitHub Pages (subpath) — demo default:
-const SITE = 'https://sandra-cabedo.github.io';
-const BASE = '/sandra-cabedo-fotografia/';
+// Custom domain:
+const SITE = 'https://sandracabedo.es';
+const BASE = '/';
 
-// Custom domain (later) — the ONLY change needed:
-// const SITE = 'https://sandracabedofotografia.es';
-// const BASE = '/';
+// GitHub Pages (subpath) — previous demo default:
+// const SITE = 'https://sandra-cabedo.github.io';
+// const BASE = '/sandra-cabedo-fotografia/';
 
 export default defineConfig({
   site: SITE,
