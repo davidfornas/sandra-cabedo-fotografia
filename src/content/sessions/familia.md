@@ -25,5 +25,3 @@ provisional: true
 Las sesiones de familia se centran en los vínculos: el juego, los abrazos y los
 momentos espontáneos por encima de las poses. Buscamos que os sintáis a gusto
 para que las fotografías reflejen cómo sois y cómo os queréis.
-
-*Contenido e imágenes provisionales para esta demo.*
