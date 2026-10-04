@@ -1,7 +1,7 @@
 ---
 title: Newborn
 description: >-
-  Fotografía newborn centrada en los primeros días y meses del bebé: calma,
+  Fotografía centrada en los primeros días y meses del bebé: calma,
   intimidad y naturalidad. Sesiones tranquilas que respetan el ritmo del recién
   nacido para conservar la delicadeza de sus primeras semanas.
 coverImage: ../../images/sessions/newborn/IMG_0020.jpg
@@ -34,7 +34,5 @@ images:
 provisional: false
 ---
 
-Las sesiones newborn se centran en los primeros días y meses del bebé, cuando
-todo es calma, intimidad y naturalidad. Trabajamos sin prisa, respetando el
-sueño y el ritmo del recién nacido, para conservar la delicadeza de sus primeras
-semanas.
+En las sesiones trabajamos sin prisa, respetando el
+sueño y el ritmo del recién nacido, así como el de su mamá.

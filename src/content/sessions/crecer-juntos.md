@@ -17,7 +17,7 @@ images:
   - src: ../../images/mocks/mock-12.jpg
     alt: Familia creciendo junta a lo largo de los años
     orientation: landscape
-provisional: true
+provisional: false
 ---
 
 Hay momentos que parecen pequeños hasta que pasa el tiempo.

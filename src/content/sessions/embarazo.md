@@ -24,6 +24,3 @@ images:
 provisional: false
 ---
 
-Las sesiones de embarazo son fotografía natural y emocional que celebra la
-espera. Retratos serenos que capturan la ilusión de estas semanas antes de
-conocer al bebé.

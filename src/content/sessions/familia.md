@@ -19,9 +19,7 @@ images:
   - src: ../../images/mocks/mock-08.jpg
     alt: Familia compartiendo un abrazo en casa
     orientation: landscape
-provisional: true
+provisional: false
 ---
 
-Las sesiones de familia se centran en los vínculos: el juego, los abrazos y los
-momentos espontáneos por encima de las poses. Buscamos que os sintáis a gusto
-para que las fotografías reflejen cómo sois y cómo os queréis.
+Buscamos que os sintáis a gusto.
