@@ -24,3 +24,6 @@ images:
 provisional: false
 ---
 
+**La espera también forma parte de vuestra historia**
+
+Hay momentos que parecen eternos y, sin embargo, pasan demasiado rápido. Guardemos un recuerdo de estas semanas, de la ilusión, de la espera y de todo lo que está a punto de cambiar.
