@@ -35,7 +35,16 @@ const { image, alt, title, subtitle } = Astro.props;
   </div>
 </section>
 
+<!-- Mobile only: subtitle below the photograph, on the page background.
+     Hidden on desktop where the overlay version above is shown instead.
+     display:none removes it from the a11y tree so content is not read twice. -->
+<div class="hero__desc container">
+  <p class="hero__desc-text">{subtitle}</p>
+</div>
+
 <style>
+  /* ── Grid: image and content overlap ── */
+
   .hero {
     position: relative;
     display: grid;
@@ -45,10 +54,12 @@ const { image, alt, title, subtitle } = Astro.props;
     grid-area: 1 / 1;
   }
 
+  /* Mobile image: responsive height capped at 560px so the photograph
+     fills the viewport without dominating very tall phones. */
   .hero__image {
-    height: 70vh;
-    min-height: 420px;
-    max-height: 90vh;
+    height: 75vh;
+    min-height: 480px;
+    max-height: 560px;
   }
 
   .hero__content {
@@ -59,14 +70,26 @@ const { image, alt, title, subtitle } = Astro.props;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-sm);
-    padding-block-end: var(--space-xl);
+    padding-block-end: var(--space-lg); /* tighter on mobile (2.5rem vs 4rem) */
   }
+
+  /* ── Title ── */
 
   .hero__title {
     color: #5B4032;
   }
 
+  /* Mobile: larger, tighter heading so the title reads as a clear focal
+     point at phone widths without overwhelming the photograph. */
+  .hero__title :global(.section-title__heading) {
+    font-size: clamp(2.625rem, 10vw, 3rem);
+    line-height: 1.07;
+  }
+
+  /* ── Subtitle (overlay version — desktop only) ── */
+
   .hero__subtitle {
+    display: none; /* hidden on mobile; shown via the 769px block below */
     margin: 0;
     max-width: 34ch;
     font-family: var(--font-body);
@@ -76,8 +99,32 @@ const { image, alt, title, subtitle } = Astro.props;
     color: #6A5549;
   }
 
+  /* ── Below-image description (mobile only) ── */
+
+  .hero__desc {
+    background: var(--color-bg);
+    padding-block: var(--space-sm) var(--space-md);
+  }
+
+  .hero__desc-text {
+    margin: 0;
+    max-width: 44ch;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  /* ── CTA ── */
+
   .hero__cta {
     margin-block-start: var(--space-2xs);
+  }
+
+  /* Slightly taller touch target for the primary CTA on mobile */
+  .hero__cta :global(.whatsapp-cta) {
+    min-height: 48px;
   }
 
   .hero__cta :global(.whatsapp-cta--primary) {
@@ -92,9 +139,35 @@ const { image, alt, title, subtitle } = Astro.props;
     border-color: #93522D;
   }
 
-  @media (min-width: 768px) {
+  /* ── Desktop (≥ 769px) ── */
+
+  @media (min-width: 769px) {
+    /* Restore the original desktop image height range */
+    .hero__image {
+      height: 70vh;
+      min-height: 420px;
+      max-height: 90vh;
+    }
+
+    /* Restore desktop content padding */
+    .hero__content {
+      padding-block-end: var(--space-xl);
+    }
+
+    /* Restore base.css h1 sizing for desktop */
+    .hero__title :global(.section-title__heading) {
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      line-height: 1.15;
+    }
+
+    /* Show subtitle inside overlay on desktop */
     .hero__subtitle {
-      font-size: 1.1875rem;
+      display: block;
+    }
+
+    /* Hide below-image description on desktop */
+    .hero__desc {
+      display: none;
     }
   }
 </style>
