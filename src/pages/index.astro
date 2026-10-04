@@ -52,7 +52,7 @@ const sessions = sessionEntries
     coverImage: entry.data.coverImage,
     coverAlt: entry.data.coverAlt,
   }))
-  .filter((s) => s.slug !== 'familia' && s.slug !== 'crecer-juntos')
+  .filter((s) => s.slug !== 'crecer-juntos')
   .sort((a, b) => navOrder.indexOf(a.slug) - navOrder.indexOf(b.slug));
 
 const portfolioImages: GalleryImage[] = [

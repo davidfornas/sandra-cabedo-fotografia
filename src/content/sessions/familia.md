@@ -4,21 +4,21 @@ description: >-
   Fotografía de familia centrada en los vínculos, el juego, los abrazos y los
   momentos espontáneos por encima de las poses. Imágenes naturales que reflejan
   cómo sois y cómo os queréis.
-coverImage: ../../images/mocks/mock-06.jpg
-coverAlt: Familia jugando y riendo junta al aire libre
+coverImage: ../../images/sessions/familia/IMG_0104.jpg
+coverAlt: Familia compartiendo un momento natural durante la sesión
 images:
-  - src: ../../images/mocks/mock-05.jpg
-    alt: Padres y su hija abrazados en un momento espontáneo
-    orientation: landscape
-  - src: ../../images/mocks/mock-06.jpg
-    alt: Familia caminando y riendo durante la sesión
-    orientation: landscape
-  - src: ../../images/mocks/mock-07.jpg
-    alt: Niños jugando mientras sus padres los miran con cariño
+  - src: ../../images/sessions/familia/IMG_0069.jpg
+    alt: Retrato familiar en un momento de complicidad y ternura
     orientation: portrait
-  - src: ../../images/mocks/mock-08.jpg
-    alt: Familia compartiendo un abrazo en casa
+  - src: ../../images/sessions/familia/IMG_0104.jpg
+    alt: Familia disfrutando juntos en un instante espontáneo
     orientation: landscape
+  - src: ../../images/sessions/familia/IMG_0190.jpg
+    alt: Momento íntimo entre los miembros de la familia
+    orientation: portrait
+  - src: ../../images/sessions/familia/IMG_0206.jpg
+    alt: Abrazo familiar captado con luz natural y sin poses
+    orientation: portrait
 provisional: false
 ---
 

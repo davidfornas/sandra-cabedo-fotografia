@@ -42,7 +42,7 @@ export const site: SiteConfig = {
   nav: [
     { label: 'Inicio', path: '/' },
     { label: 'Newborn', path: '/newborn/' },
-    // { label: 'Familia', path: '/familia/' },
+    { label: 'Familia', path: '/familia/' },
     // { label: 'Crecer juntos', path: '/crecer-juntos/' },
     { label: 'Embarazo', path: '/embarazo/' },
     { label: 'Sobre mí', path: '/sobre-mi/' },
@@ -59,7 +59,7 @@ export const site: SiteConfig = {
     handle: '@sandracabedofotografia',
   },
   google: {
-    reviewsUrl: '',
-    leaveReviewUrl: '',
+    reviewsUrl: 'https://share.google/PnV6kiAzOTXybgtxE',
+    leaveReviewUrl: 'https://g.page/r/Cc4ZPLfBrdlwEAE/review',
   },
 };

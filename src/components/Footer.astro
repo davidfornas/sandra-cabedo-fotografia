@@ -39,6 +39,13 @@ const legalLinks = [
 
     <nav class="site-footer__legal" aria-label="Enlaces legales">
       <ul>
+        {site.google.reviewsUrl !== '' && (
+          <li>
+            <a href={site.google.reviewsUrl} target="_blank" rel="noopener noreferrer">
+              Opiniones en Google
+            </a>
+          </li>
+        )}
         {
           legalLinks.map((link) => (
             <li>
