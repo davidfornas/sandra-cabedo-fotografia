@@ -43,6 +43,15 @@ const { image, alt, title, subtitle } = Astro.props;
 
   .hero__media {
     grid-area: 1 / 1;
+    position: relative;
+  }
+
+  .hero__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(67, 43, 31, 0.18), transparent 65%);
+    pointer-events: none;
   }
 
   .hero__image {
@@ -60,8 +69,11 @@ const { image, alt, title, subtitle } = Astro.props;
     align-items: flex-start;
     gap: var(--space-sm);
     padding-block-end: var(--space-xl);
-    color: var(--color-bg);
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero__title {
+    color: #FFF8F1;
   }
 
   .hero__subtitle {
@@ -71,10 +83,23 @@ const { image, alt, title, subtitle } = Astro.props;
     font-size: 1.0625rem;
     font-weight: 300;
     line-height: 1.5;
+    color: #F7EEE7;
   }
 
   .hero__cta {
     margin-block-start: var(--space-2xs);
+  }
+
+  .hero__cta :global(.whatsapp-cta--primary) {
+    background-color: #AD6439;
+    border-color: #AD6439;
+    color: #FFF9F4;
+  }
+
+  .hero__cta :global(.whatsapp-cta--primary:hover),
+  .hero__cta :global(.whatsapp-cta--primary:focus-visible) {
+    background-color: #93522D;
+    border-color: #93522D;
   }
 
   @media (min-width: 768px) {
