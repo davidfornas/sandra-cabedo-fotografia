@@ -14,24 +14,24 @@ import type { GalleryImage } from '../lib/gallery';
 
 import heroImage from '../images/sessions/newborn/IMG_1454.jpg';
 import portraitImage from '../images/sandra/sandra.jpg';
-import studioImage from '../images/mocks/mock-14.jpg';
+// import studioImage from '../images/mocks/mock-14.jpg';
 
 import portfolio01 from '../images/sessions/newborn/IMG_0851.jpg';
 import portfolio02 from '../images/sessions/newborn/IMG_1454.jpg';
-import portfolio03 from '../images/mocks/mock-19.jpg';
-import portfolio04 from '../images/mocks/mock-07.jpg';
+// import portfolio03 from '../images/mocks/mock-19.jpg';
+// import portfolio04 from '../images/mocks/mock-07.jpg';
 import portfolio05 from '../images/sessions/embarazo/IMG_9334.jpg';
-import portfolio06 from '../images/mocks/mock-11.jpg';
-import portfolio07 from '../images/mocks/mock-12.jpg';
+// import portfolio06 from '../images/mocks/mock-11.jpg';
+// import portfolio07 from '../images/mocks/mock-12.jpg';
 import portfolio08 from '../images/sessions/embarazo/IMG_9522.jpg';
-import portfolio09 from '../images/mocks/mock-18.jpg';
+// import portfolio09 from '../images/mocks/mock-18.jpg';
 
-import feed01 from '../images/mocks/mock-03.jpg';
-import feed02 from '../images/mocks/mock-04.jpg';
-import feed03 from '../images/mocks/mock-10.jpg';
-import feed04 from '../images/mocks/mock-13.jpg';
-import feed05 from '../images/mocks/mock-16.jpg';
-import feed06 from '../images/mocks/mock-17.jpg';
+// import feed01 from '../images/mocks/mock-03.jpg';
+// import feed02 from '../images/mocks/mock-04.jpg';
+// import feed03 from '../images/mocks/mock-10.jpg';
+// import feed04 from '../images/mocks/mock-13.jpg';
+// import feed05 from '../images/mocks/mock-16.jpg';
+// import feed06 from '../images/mocks/mock-17.jpg';
 
 const seo = {
   title: 'Sandra Cabedo Fotografía · Fotógrafo familiar en Castellón',
@@ -52,31 +52,33 @@ const sessions = sessionEntries
     coverImage: entry.data.coverImage,
     coverAlt: entry.data.coverAlt,
   }))
+  .filter((s) => s.slug !== 'familia' && s.slug !== 'crecer-juntos')
   .sort((a, b) => navOrder.indexOf(a.slug) - navOrder.indexOf(b.slug));
 
 const portfolioImages: GalleryImage[] = [
   { src: portfolio01, alt: 'Recién nacido dormido acurrucado', orientation: 'portrait' },
   { src: portfolio02, alt: 'Padres sosteniendo a su recién nacido', orientation: 'landscape' },
-  { src: portfolio03, alt: 'Familia en un momento espontáneo al aire libre', orientation: 'portrait' },
-  { src: portfolio04, alt: 'Niños jugando de forma espontánea en un día luminoso', orientation: 'landscape' },
+  // { src: portfolio03, alt: 'Familia en un momento espontáneo al aire libre', orientation: 'portrait' },
+  // { src: portfolio04, alt: 'Niños jugando de forma espontánea en un día luminoso', orientation: 'landscape' },
   { src: portfolio05, alt: 'Futura madre en un retrato sereno y cálido', orientation: 'portrait' },
-  { src: portfolio06, alt: 'Retrato familiar en tonos suaves y naturales', orientation: 'portrait' },
-  { src: portfolio07, alt: 'Momento de complicidad entre hermanos', orientation: 'landscape' },
+  // { src: portfolio06, alt: 'Retrato familiar en tonos suaves y naturales', orientation: 'portrait' },
+  // { src: portfolio07, alt: 'Momento de complicidad entre hermanos', orientation: 'landscape' },
   { src: portfolio08, alt: 'Mujer embarazada junto a una ventana con luz natural', orientation: 'landscape' },
-  { src: portfolio09, alt: 'Abrazo familiar captado con luz natural', orientation: 'landscape' },
+  // { src: portfolio09, alt: 'Abrazo familiar captado con luz natural', orientation: 'landscape' },
 ].map((image) => ({
   ...image,
   width: image.src.width,
   height: image.src.height,
 }));
 
-const feedImages = [
-  { src: feed01, alt: 'Recién nacido descansando en un ambiente luminoso' },
-  { src: feed02, alt: 'Padres sosteniendo con cuidado a su bebé' },
-  { src: feed03, alt: 'Niños corriendo felices durante una sesión familiar' },
-  { src: feed04, alt: 'Retrato cercano de una familia sonriendo' },
-  { src: feed05, alt: 'Detalle de manos entrelazadas de una familia' },
-  { src: feed06, alt: 'Momento tierno entre madre e hijo' },
+const feedImages: { src: typeof portfolio01; alt: string }[] = [
+  // All feed images are mocks — commented out:
+  // { src: feed01, alt: 'Recién nacido descansando en un ambiente luminoso' },
+  // { src: feed02, alt: 'Padres sosteniendo con cuidado a su bebé' },
+  // { src: feed03, alt: 'Niños corriendo felices durante una sesión familiar' },
+  // { src: feed04, alt: 'Retrato cercano de una familia sonriendo' },
+  // { src: feed05, alt: 'Detalle de manos entrelazadas de una familia' },
+  // { src: feed06, alt: 'Momento tierno entre madre e hijo' },
 ];
 
 const conoceMeHref = withBase('/sobre-mi/');
@@ -153,6 +155,7 @@ const conoceMeHref = withBase('/sobre-mi/');
 
   <section class="section children">
     <div class="container children__inner">
+      {/* mock image (studioImage) commented out:
       <div class="children__media">
         <ImageFrame
           src={studioImage}
@@ -162,6 +165,7 @@ const conoceMeHref = withBase('/sobre-mi/');
           class="children__image"
         />
       </div>
+      */}
       <div class="children__text">
         <SectionTitle as="h2" eyebrow="Con los peques">Que se sientan como en casa</SectionTitle>
         <p>

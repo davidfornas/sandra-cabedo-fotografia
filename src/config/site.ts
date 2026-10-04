@@ -42,8 +42,8 @@ export const site: SiteConfig = {
   nav: [
     { label: 'Inicio', path: '/' },
     { label: 'Newborn', path: '/newborn/' },
-    { label: 'Familia', path: '/familia/' },
-    { label: 'Crecer juntos', path: '/crecer-juntos/' },
+    // { label: 'Familia', path: '/familia/' },
+    // { label: 'Crecer juntos', path: '/crecer-juntos/' },
     { label: 'Embarazo', path: '/embarazo/' },
     { label: 'Sobre mí', path: '/sobre-mi/' },
     { label: 'Contacto', path: '/contacto/' },
