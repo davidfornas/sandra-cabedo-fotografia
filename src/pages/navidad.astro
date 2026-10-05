@@ -1,0 +1,364 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { site } from '../config/site';
+import { whatsappUrlWithMessage } from '../lib/whatsapp';
+
+const CHRISTMAS_MESSAGE = 'Hola Sandra 😊 Me gustaría reservar una sesión de Navidad.';
+const ctaUrl = whatsappUrlWithMessage(CHRISTMAS_MESSAGE);
+
+const seo = {
+  title: 'Sesiones de Navidad en Castellón | Sandra Cabedo Fotografía',
+  description:
+    'Sesiones fotográficas de Navidad 2026 en Castellón. Fotografía familiar natural y cálida para conservar vuestros recuerdos de estas fiestas. Agenda abierta.',
+  path: '/navidad/',
+};
+---
+
+<PageLayout
+  title={seo.title}
+  description={seo.description}
+  path={seo.path}
+  activePath="/navidad/"
+>
+
+  <!-- ── HERO ── -->
+  <section class="xmas-hero">
+    <div class="container xmas-hero__inner">
+      <p class="xmas-hero__eyebrow">Navidad 2026</p>
+      <h1 class="xmas-hero__heading">Una Navidad<br class="xmas-br" /> para recordar</h1>
+      <p class="xmas-hero__body">
+        Sesiones fotográficas cálidas y naturales para conservar la Navidad de
+        vuestra familia tal y como la vivís: entre risas, abrazos y esos pequeños
+        gestos que hacen que estas fechas sean únicas.
+      </p>
+      {ctaUrl && (
+        <a
+          href={ctaUrl}
+          class="xmas-cta touch-target"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Reserva tu sesión
+        </a>
+      )}
+    </div>
+  </section>
+
+  <!-- ── INSTAGRAM REEL ── -->
+  <section class="xmas-reel-section">
+    <div class="container">
+      <a
+        href="https://www.instagram.com/sandracabedofotografia/reel/DeFM9atp8Uq/"
+        class="xmas-reel"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver el Reel de Navidad de Sandra Cabedo Fotografía en Instagram"
+      >
+        <div class="xmas-reel__play" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="40" height="40" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" />
+            <path d="M20 16.5l13 7.5-13 7.5V16.5z" fill="currentColor" />
+          </svg>
+        </div>
+        <div class="xmas-reel__text">
+          <p class="xmas-reel__label">Reel de Navidad 2026</p>
+          <p class="xmas-reel__action">Ver en Instagram&thinsp;↗</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SESSION INFO ── -->
+  <section class="xmas-info section">
+    <div class="container xmas-info__inner">
+      <SectionTitle as="h2" eyebrow="Las sesiones">
+        Fotografía de Navidad en Castellón
+      </SectionTitle>
+      <div class="xmas-info__body">
+        <p>
+          Las sesiones de Navidad son espacios tranquilos y sin guión, donde lo
+          importante es que vuestra familia se sienta cómoda. Trabajamos en estudio
+          privado con una ambientación cálida y sencilla en Castellón, sin poses
+          forzadas ni decorados artificiales.
+        </p>
+        <p>
+          El resultado son imágenes honestas que reflejan cómo sois: vuestros abrazos,
+          vuestras risas y esa calidez que solo existe en familia.
+        </p>
+
+        <!--
+          Session details — uncomment and fill in when confirmed:
+
+          <dl class="xmas-info__details">
+            <div class="xmas-info__detail">
+              <dt>Fechas</dt>
+              <dd>Por determinar</dd>
+            </div>
+            <div class="xmas-info__detail">
+              <dt>Duración</dt>
+              <dd>Por determinar</dd>
+            </div>
+            <div class="xmas-info__detail">
+              <dt>Fotografías</dt>
+              <dd>Por determinar</dd>
+            </div>
+            <div class="xmas-info__detail">
+              <dt>Precio</dt>
+              <dd>Por determinar</dd>
+            </div>
+          </dl>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BOOKING CTA ── -->
+  <section class="xmas-booking">
+    <div class="container xmas-booking__inner">
+      <SectionTitle as="h2" align="center">
+        ¿Creamos vuestro recuerdo de Navidad?
+      </SectionTitle>
+      <p class="xmas-booking__body">
+        Las reservas para las sesiones de Navidad 2026 ya están abiertas.
+      </p>
+      {ctaUrl && (
+        <a
+          href={ctaUrl}
+          class="xmas-cta touch-target"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Quiero reservar
+        </a>
+      )}
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  /* ─── HERO ─────────────────────────────────── */
+
+  .xmas-hero {
+    background-color: var(--color-surface);
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  .xmas-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .xmas-hero__eyebrow {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .xmas-hero__heading {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: clamp(2.75rem, 10vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+  }
+
+  /* Line break on mobile only */
+  .xmas-br { display: inline; }
+  @media (min-width: 640px) { .xmas-br { display: none; } }
+
+  .xmas-hero__body {
+    margin: 0;
+    max-width: 48ch;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  /* ─── REEL CARD ─────────────────────────────── */
+
+  .xmas-reel-section {
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  .xmas-reel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-surface-2);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color 160ms ease, background-color 160ms ease;
+    max-width: 540px;
+  }
+
+  .xmas-reel:hover,
+  .xmas-reel:focus-visible {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface);
+  }
+
+  .xmas-reel__play {
+    flex-shrink: 0;
+    color: var(--color-accent);
+  }
+
+  .xmas-reel__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .xmas-reel__label {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+
+  .xmas-reel__action {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+  }
+
+  /* ─── INFO ──────────────────────────────────── */
+
+  .xmas-info__inner {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .xmas-info__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .xmas-info__body p {
+    margin: 0;
+    max-width: 58ch;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  /* Session details list — shown when uncommented */
+  .xmas-info__details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+    margin: var(--space-md) 0 0;
+    padding: var(--space-md);
+    background-color: var(--color-surface);
+    border-radius: 8px;
+  }
+
+  .xmas-info__detail dt {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3xs);
+  }
+
+  .xmas-info__detail dd {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+
+  /* ─── BOOKING ───────────────────────────────── */
+
+  .xmas-booking {
+    background-color: var(--color-surface);
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  .xmas-booking__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .xmas-booking__body {
+    margin: 0;
+    max-width: 44ch;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  /* ─── SHARED CTA BUTTON ──────────────────────── */
+
+  .xmas-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding-inline: var(--space-md);
+    padding-block: var(--space-2xs);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    background-color: #AD6439;
+    border: 1px solid #AD6439;
+    color: #FFF9F4;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .xmas-cta:hover,
+  .xmas-cta:focus-visible {
+    background-color: #93522D;
+    border-color: #93522D;
+  }
+
+  /* ─── DESKTOP ────────────────────────────────── */
+
+  @media (min-width: 769px) {
+    .xmas-hero {
+      padding-block: var(--space-2xl);
+    }
+
+    .xmas-hero__inner {
+      max-width: 720px;
+    }
+
+    .xmas-info__inner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xmas-reel,
+    .xmas-cta {
+      transition: none;
+    }
+  }
+</style>

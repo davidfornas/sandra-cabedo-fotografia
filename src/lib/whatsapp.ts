@@ -12,3 +12,10 @@ export function whatsappUrl(): string | null {
   const text = encodeURIComponent(site.whatsapp.message);
   return `https://wa.me/${phone}?text=${text}`;
 }
+
+/** Build a WhatsApp URL with a custom message, overriding the configured default. */
+export function whatsappUrlWithMessage(message: string): string | null {
+  if (!isWhatsAppEnabled()) return null;
+  const phone = site.whatsapp.phone.replace(/\D/g, '');
+  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+}
