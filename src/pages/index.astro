@@ -8,6 +8,7 @@ import Gallery from '../components/Gallery.astro';
 import ImageFrame from '../components/ImageFrame.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import InstagramCTA from '../components/InstagramCTA.astro';
+import XmasAnnouncement from '../components/XmasAnnouncement.astro';
 import { site } from '../config/site';
 import { withBase } from '../lib/url';
 import type { GalleryImage } from '../lib/gallery';
@@ -98,6 +99,8 @@ const conoceMeHref = withBase('/sobre-mi/');
     title="Fotografías de vuestra historia"
     subtitle="Conservo los recuerdos naturales de vuestra familia."
   />
+
+  <XmasAnnouncement />
 
   <section class="section presentation">
     <div class="container presentation__inner">

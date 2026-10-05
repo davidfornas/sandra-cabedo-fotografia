@@ -1,0 +1,114 @@
+---
+import { withBase } from '../lib/url';
+---
+
+<!-- Christmas 2026 announcement strip — remove this component after the campaign -->
+<div class="xmas-ann" role="region" aria-label="Campaña Navidad 2026">
+  <div class="container xmas-ann__inner">
+
+    <div class="xmas-ann__label">
+      <span class="xmas-ann__season">Navidad 2026</span>
+      <span class="xmas-ann__badge">Agenda abierta</span>
+    </div>
+
+    <p class="xmas-ann__desc">Sesiones de Navidad en Castellón</p>
+
+    <a href={withBase('/navidad/')} class="xmas-ann__cta">
+      Descúbrelas&thinsp;<span aria-hidden="true">→</span>
+    </a>
+
+  </div>
+</div>
+
+<style>
+  .xmas-ann {
+    background-color: var(--color-surface);
+    border-block: 1px solid var(--color-surface-2);
+  }
+
+  /* Mobile: compact vertical stack */
+  .xmas-ann__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    padding-block: var(--space-md);
+  }
+
+  .xmas-ann__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+  }
+
+  .xmas-ann__season {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .xmas-ann__badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    padding: 2px 8px;
+    line-height: 1.4;
+  }
+
+  .xmas-ann__desc {
+    margin: 0;
+    max-width: none;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text);
+  }
+
+  .xmas-ann__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .xmas-ann__cta:hover,
+  .xmas-ann__cta:focus-visible {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
+  }
+
+  /* Desktop: single horizontal row */
+  @media (min-width: 769px) {
+    .xmas-ann__inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      padding-block: var(--space-sm);
+    }
+
+    .xmas-ann__desc {
+      flex: 1;
+      text-align: center;
+    }
+
+    .xmas-ann__cta {
+      min-height: unset; /* tight row, no oversized touch area needed on desktop */
+    }
+  }
+</style>
