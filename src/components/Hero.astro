@@ -35,61 +35,51 @@ const { image, alt, title, subtitle } = Astro.props;
   </div>
 </section>
 
-<!-- Mobile only: subtitle below the photograph, on the page background.
-     Hidden on desktop where the overlay version above is shown instead.
-     display:none removes it from the a11y tree so content is not read twice. -->
+<!-- Below-image description — visible on mobile, hidden on desktop.
+     display:none removes it from the a11y tree so the subtitle is never read twice. -->
 <div class="hero__desc container">
   <p class="hero__desc-text">{subtitle}</p>
 </div>
 
 <style>
-  /* ── Grid: image and content overlap ── */
+  /* ─────────────────────────────────────────────
+     MOBILE — clean stacked layout
+     Photograph is unobstructed.
+     Heading and CTA flow below on the page background.
+     ───────────────────────────────────────────── */
 
   .hero {
     position: relative;
-    display: grid;
+    /* Plain block on mobile — no grid overlap */
   }
 
-  .hero__media {
-    grid-area: 1 / 1;
-  }
-
-  /* Mobile image: responsive height capped at 560px so the photograph
-     fills the viewport without dominating very tall phones. */
+  /* Natural aspect-ratio crop; max-height prevents very tall phones
+     from an excessively large image. */
   .hero__image {
-    height: 75vh;
-    min-height: 480px;
-    max-height: 560px;
+    max-height: 75vh;
   }
 
+  /* Flows directly below the image */
   .hero__content {
-    grid-area: 1 / 1;
-    z-index: 1;
-    align-self: end;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-sm);
-    padding-block-end: var(--space-lg); /* tighter on mobile (2.5rem vs 4rem) */
+    padding-block: var(--space-md) var(--space-xs);
   }
-
-  /* ── Title ── */
 
   .hero__title {
     color: #5B4032;
   }
 
-  /* Mobile: larger, tighter heading so the title reads as a clear focal
-     point at phone widths without overwhelming the photograph. */
   .hero__title :global(.section-title__heading) {
     font-size: clamp(2.625rem, 10vw, 3rem);
     line-height: 1.07;
   }
 
-  /* ── Subtitle (overlay version — desktop only) ── */
-
+  /* Subtitle inside overlay — hidden on mobile (shown in hero__desc instead) */
   .hero__subtitle {
-    display: none; /* hidden on mobile; shown via the 769px block below */
+    display: none;
     margin: 0;
     max-width: 34ch;
     font-family: var(--font-body);
@@ -99,11 +89,9 @@ const { image, alt, title, subtitle } = Astro.props;
     color: #6A5549;
   }
 
-  /* ── Below-image description (mobile only) ── */
-
+  /* Below-image description (mobile only) */
   .hero__desc {
-    background: var(--color-bg);
-    padding-block: var(--space-sm) var(--space-md);
+    padding-block: 0 var(--space-md);
   }
 
   .hero__desc-text {
@@ -116,13 +104,10 @@ const { image, alt, title, subtitle } = Astro.props;
     color: var(--color-text-secondary);
   }
 
-  /* ── CTA ── */
-
   .hero__cta {
     margin-block-start: var(--space-2xs);
   }
 
-  /* Slightly taller touch target for the primary CTA on mobile */
   .hero__cta :global(.whatsapp-cta) {
     min-height: 48px;
   }
@@ -139,33 +124,43 @@ const { image, alt, title, subtitle } = Astro.props;
     border-color: #93522D;
   }
 
-  /* ── Desktop (≥ 769px) ── */
+  /* ─────────────────────────────────────────────
+     DESKTOP (≥ 769px) — grid overlay, unchanged
+     ───────────────────────────────────────────── */
 
   @media (min-width: 769px) {
-    /* Restore the original desktop image height range */
+    .hero {
+      display: grid;
+    }
+
+    .hero__media {
+      grid-area: 1 / 1;
+    }
+
     .hero__image {
       height: 70vh;
       min-height: 420px;
       max-height: 90vh;
     }
 
-    /* Restore desktop content padding */
     .hero__content {
+      grid-area: 1 / 1;
+      z-index: 1;
+      align-self: end;
+      padding-block: 0;
       padding-block-end: var(--space-xl);
     }
 
-    /* Restore base.css h1 sizing for desktop */
     .hero__title :global(.section-title__heading) {
       font-size: clamp(2rem, 6vw, 3.25rem);
       line-height: 1.15;
     }
 
-    /* Show subtitle inside overlay on desktop */
     .hero__subtitle {
       display: block;
+      font-size: 1.1875rem;
     }
 
-    /* Hide below-image description on desktop */
     .hero__desc {
       display: none;
     }

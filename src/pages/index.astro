@@ -112,9 +112,6 @@ const conoceMeHref = withBase('/sobre-mi/');
           Creo en las imágenes honestas, cálidas y luminosas, esas que dentro de unos años
           os hagan recordar exactamente cómo os sentíais.
         </p>
-        <p class="presentation__cta">
-          <a class="link-cta touch-target" href={conoceMeHref}>Conóceme más</a>
-        </p>
       </div>
       <div class="presentation__media">
         <ImageFrame
@@ -127,6 +124,9 @@ const conoceMeHref = withBase('/sobre-mi/');
           class="presentation__portrait"
         />
       </div>
+      <p class="presentation__cta">
+        <a class="link-cta touch-target" href={conoceMeHref}>Conóceme más</a>
+      </p>
     </div>
   </section>
 
@@ -237,11 +237,19 @@ const conoceMeHref = withBase('/sobre-mi/');
 </PageLayout>
 
 <style>
-  .presentation__inner,
+  /* Presentation and children share a single-column base grid on mobile.
+     They are split here because their desktop layouts differ. */
   .children__inner {
     display: grid;
     gap: var(--space-xl);
     align-items: center;
+  }
+
+  /* Mobile: natural stacking order text → photo → CTA  */
+  .presentation__inner {
+    display: grid;
+    gap: var(--space-lg);
+    align-items: start;
   }
 
   .presentation__text p,
@@ -254,7 +262,7 @@ const conoceMeHref = withBase('/sobre-mi/');
   }
 
   .presentation__cta {
-    margin-block-start: var(--space-md);
+    /* vertical spacing handled by .presentation__inner gap */
   }
 
   .link-cta {
@@ -340,7 +348,23 @@ const conoceMeHref = withBase('/sobre-mi/');
   }
 
   @media (min-width: 768px) {
-    .presentation__inner,
+    /* Presentation: two-column layout with photo spanning both text and CTA rows.
+       Visual result is equivalent to the original — text+CTA on the left,
+       photo on the right — now achieved via grid areas. */
+    .presentation__inner {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "text  media"
+        "cta   media";
+      row-gap: var(--space-sm);
+      column-gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .presentation__text  { grid-area: text; }
+    .presentation__media { grid-area: media; }
+    .presentation__cta   { grid-area: cta; }
+
     .children__inner {
       grid-template-columns: 1fr 1fr;
     }
