@@ -81,15 +81,18 @@ const hasGoogle = reviewsUrl !== '' || leaveReviewUrl !== '';
             </li>
           ))}
           <li>
-            <span class="hola__session-link hola__session-link--soon">
-              <span>Crecer juntos</span>
-              <span class="hola__soon-badge">Próximamente</span>
-            </span>
-          </li>
-          <li>
             <a href={withBase('/navidad/')} class="hola__session-link" data-link="navidad">
               <span>Navidad 2026</span>
               <span class="hola__open-badge">Agenda abierta</span>
+            </a>
+            <a
+              href="https://www.instagram.com/sandracabedofotografia/reel/DeFM9atp8Uq/"
+              class="hola__reel-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-link="navidad-reel"
+            >
+              Ver más ↗
             </a>
           </li>
         </ul>
@@ -318,6 +321,22 @@ const hasGoogle = reviewsUrl !== '' || leaveReviewUrl !== '';
     border: 1px solid var(--color-accent);
     border-radius: 999px;
     padding: 2px 8px;
+  }
+
+  .hola__reel-link {
+    display: block;
+    padding-inline: var(--space-sm);
+    padding-block: var(--space-2xs);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-surface-2);
+  }
+
+  .hola__reel-link:hover,
+  .hola__reel-link:focus-visible {
+    color: var(--color-accent);
   }
 
   /* --- Google reviews --- */
