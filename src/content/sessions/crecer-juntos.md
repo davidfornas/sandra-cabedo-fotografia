@@ -2,21 +2,18 @@
 title: Crecer juntos
 description: >-
   Una historia que se construye poco a poco: desde la espera y los primeros días hasta cada nueva etapa. Recuerdos para ver cómo crece vuestra familia.
-coverImage: ../../images/mocks/mock-09.jpg
-coverAlt: Collage emocional de una familia en distintas etapas de la vida
+coverImage: ../../images/sessions/crecer-juntos/Sofia 02.jpg
+coverAlt: Niña jugando con naturalidad durante una sesión de familia
 images:
-  - src: ../../images/mocks/mock-09.jpg
-    alt: Madre embarazada acariciando su vientre
+  - src: ../../images/sessions/crecer-juntos/Sofia 02.jpg
+    alt: Niña disfrutando de un momento espontáneo y lleno de vida
     orientation: portrait
-  - src: ../../images/mocks/mock-10.jpg
-    alt: Bebé en sus primeros meses junto a sus padres
-    orientation: landscape
-  - src: ../../images/mocks/mock-11.jpg
-    alt: Niño soplando las velas en su cumpleaños
+  - src: ../../images/sessions/crecer-juntos/Sofia 03.jpg
+    alt: Instante de juego y naturalidad capturado con luz cálida
     orientation: portrait
-  - src: ../../images/mocks/mock-12.jpg
-    alt: Familia creciendo junta a lo largo de los años
-    orientation: landscape
+  - src: ../../images/sessions/crecer-juntos/Sofia 05.jpg
+    alt: Retrato de infancia lleno de ternura y autenticidad
+    orientation: portrait
 provisional: false
 ---
 
