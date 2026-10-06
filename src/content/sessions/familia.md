@@ -19,6 +19,15 @@ images:
   - src: ../../images/sessions/familia/IMG_0206.jpg
     alt: Abrazo familiar captado con luz natural y sin poses
     orientation: portrait
+  - src: ../../images/sessions/familia/IMG_1937.jpg
+    alt: Momento familiar espontáneo capturado con luz natural
+    orientation: landscape
+  - src: ../../images/sessions/familia/IMG_1868.jpg
+    alt: Familia disfrutando juntos en un instante cálido y natural
+    orientation: landscape
+  - src: ../../images/sessions/familia/IMG_1927.jpg
+    alt: Familia en un momento espontáneo lleno de calidez y naturalidad
+    orientation: landscape
 provisional: false
 ---
 
