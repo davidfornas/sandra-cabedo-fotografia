@@ -1,5 +1,31 @@
 ---
 import SessionPage from '../components/SessionPage.astro';
+import type { FaqItem } from '../components/SessionFAQ.astro';
+
+const faqItems: FaqItem[] = [
+  {
+    q: '¿Qué hacemos durante la sesión?',
+    a: 'Pasear, jugar, abrazaros. No hay poses preparadas ni nada que memorizar. Os guío con suavidad cuando hace falta, pero la mayor parte del tiempo dejo que la sesión fluya de forma natural para captar cómo sois de verdad.',
+  },
+  {
+    // TODO: Confirm available shooting locations (studio, outdoor spots)
+    q: '¿Dónde se realiza la sesión?',
+    a: 'En el estudio o en exteriores, según lo que mejor encaje con vuestra familia y la temporada. Hablamos antes de la sesión para elegir juntos el espacio que más os apetezca.',
+  },
+  {
+    q: '¿Qué pasa si los niños no colaboran?',
+    a: 'Es completamente normal y forma parte de la sesión. Con paciencia y sin forzar nada, siempre aparecen los momentos genuinos más bonitos. Los niños siendo niños son, muchas veces, lo mejor de la foto.',
+  },
+  {
+    q: '¿Qué ropa recomendáis?',
+    a: 'Tonos neutros o tierra, sin estampados muy llamativos, suelen funcionar muy bien para que la familia quede unida visualmente. Pero sobre todo, lleváis algo con lo que os sintáis cómodos y vosotros mismos.',
+  },
+  {
+    // TODO: Confirm exact session duration and update this answer
+    q: '¿Cuánto dura la sesión?',
+    a: 'Lo suficiente para que la familia se relaje y se olvide de que hay una cámara delante. Os confirmo la duración exacta al reservar.',
+  },
+];
 ---
 
 <SessionPage
@@ -8,4 +34,5 @@ import SessionPage from '../components/SessionPage.astro';
   seoTitle="Sesiones familiares en Castellón | Sandra Cabedo Fotografía"
   seoDescription="Fotografía de familia en Castellón centrada en los vínculos, el juego y los momentos espontáneos por encima de las poses."
   ctaLabel="Reserva tu sesión"
+  faqItems={faqItems}
 />

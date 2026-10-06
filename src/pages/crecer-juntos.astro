@@ -1,5 +1,30 @@
 ---
 import SessionPage from '../components/SessionPage.astro';
+import type { FaqItem } from '../components/SessionFAQ.astro';
+
+const faqItems: FaqItem[] = [
+  {
+    q: '¿En qué consiste exactamente "Crecer juntos"?',
+    a: 'Es un acompañamiento fotográfico a lo largo del tiempo: el embarazo, los primeros días, los primeros pasos, los cumpleaños... Vamos creando un álbum de vuestra historia que crece con vuestra familia, sesión a sesión.',
+  },
+  {
+    q: '¿Se puede empezar en cualquier momento?',
+    a: 'Sí. Podéis empezar durante el embarazo, con el recién nacido o en cualquier etapa de la infancia. No hay un punto de inicio obligatorio: empezamos donde estéis y seguimos desde ahí.',
+  },
+  {
+    // TODO: Define number of sessions, frequency and pricing for the Crecer Juntos package
+    q: '¿Cuántas sesiones incluye y con qué frecuencia?',
+    a: 'Depende del momento en que empecéis y de cómo queráis organizar el acompañamiento. Hablamos y lo adaptamos a vuestra historia y vuestro ritmo.',
+  },
+  {
+    q: '¿Las sesiones son siempre en el mismo estilo?',
+    a: 'El hilo conductor siempre es el mismo: luz natural, sin poses, centrado en cómo sois. Cada sesión tiene su propio ritmo según la etapa de vuestra familia.',
+  },
+  {
+    q: '¿Puedo regalar "Crecer juntos" a una familia?',
+    a: 'Es un regalo precioso, muy especial para un baby shower o para los primeros meses. Contáctame y te cuento cómo funciona y cómo prepararlo como regalo.',
+  },
+];
 ---
 
 <SessionPage
@@ -9,4 +34,5 @@ import SessionPage from '../components/SessionPage.astro';
   seoDescription="Acompañamiento fotográfico de vuestra familia en Castellón a lo largo del tiempo: embarazo, nacimiento, primeros meses y las etapas de la infancia."
   ctaLabel="Consultar disponibilidad"
   conceptLine="No fotografiar solamente un momento, sino ver crecer vuestra historia"
+  faqItems={faqItems}
 />

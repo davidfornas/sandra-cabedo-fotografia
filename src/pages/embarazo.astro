@@ -1,5 +1,31 @@
 ---
 import SessionPage from '../components/SessionPage.astro';
+import type { FaqItem } from '../components/SessionFAQ.astro';
+
+const faqItems: FaqItem[] = [
+  {
+    q: '¿Cuándo es el mejor momento para hacer la sesión?',
+    a: 'Entre las semanas 30 y 34 de embarazo. En esa etapa el vientre ya está bien visible pero la mamá todavía se siente cómoda y con energía para la sesión.',
+  },
+  {
+    q: '¿Puede participar mi pareja, mis hijos u otros familiares?',
+    a: 'Por supuesto. La sesión puede ser solo para ti, para vosotros dos, o incluir a los hermanos mayores si los hay. Decidís vosotros cómo queréis recordar este momento.',
+  },
+  {
+    q: '¿Qué ropa debo llevar?',
+    a: 'Telas fluidas, vestidos o lo que te haga sentir cómoda y guapa. Colores neutros, blancos o tierra suelen funcionar muy bien con la luz natural. Si no tienes claro qué traer, con gusto te oriento antes de la sesión.',
+  },
+  {
+    // TODO: Confirm available shooting locations (studio/outdoor) and specific details
+    q: '¿Dónde se realizan las sesiones?',
+    a: 'En el estudio o en exteriores, según tu preferencia y la temporada. Hablamos antes para elegir el espacio que mejor encaje con lo que imaginas.',
+  },
+  {
+    // TODO: Confirm exact session duration and update this answer
+    q: '¿Cuánto dura la sesión?',
+    a: 'Lo suficiente para que te relajes y el resultado sea natural. Te confirmo la duración exacta al reservar.',
+  },
+];
 ---
 
 <SessionPage
@@ -8,4 +34,5 @@ import SessionPage from '../components/SessionPage.astro';
   seoTitle="Fotografía de embarazo en Castellón | Sandra Cabedo Fotografía"
   seoDescription="Fotografía de embarazo en Castellón, natural y emocional, que celebra la espera con retratos serenos antes de conocer al bebé."
   ctaLabel="Reserva tu sesión"
+  faqItems={faqItems}
 />

@@ -4,6 +4,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import SectionTitle from './SectionTitle.astro';
 import Gallery from './Gallery.astro';
 import WhatsAppCTA, { type WhatsAppLabel } from './WhatsAppCTA.astro';
+import SessionFAQ, { type FaqItem } from './SessionFAQ.astro';
 import type { GalleryImage } from '../lib/gallery';
 
 interface Props {
@@ -13,9 +14,11 @@ interface Props {
   seoDescription: string;
   ctaLabel: WhatsAppLabel;
   conceptLine?: string;
+  faqItems?: FaqItem[];
+  faqSubtitle?: string;
 }
 
-const { slug, path, seoTitle, seoDescription, ctaLabel, conceptLine } = Astro.props;
+const { slug, path, seoTitle, seoDescription, ctaLabel, conceptLine, faqItems, faqSubtitle } = Astro.props;
 
 const entry = await getEntry('sessions', slug);
 if (!entry) {
@@ -43,6 +46,8 @@ const { Content } = await render(entry);
   showFooterSocial={true}
 >
   <article class="session section">
+
+    <!-- Intro: heading, description, top CTA -->
     <div class="container session__intro">
       <SectionTitle as="h1" eyebrow="Sesión">{title}</SectionTitle>
       <p class="session__description">{description}</p>
@@ -52,15 +57,29 @@ const { Content } = await render(entry);
       </div>
     </div>
 
+    <!-- Gallery -->
     <div class="container session__gallery">
       <Gallery images={galleryImages} />
     </div>
 
+    <!-- Editorial notice from markdown body -->
     <div class="container">
       <div class="session__body">
         <Content />
       </div>
     </div>
+
+    <!-- FAQ -->
+    {faqItems && faqItems.length > 0 && (
+      <SessionFAQ items={faqItems} subtitle={faqSubtitle} />
+    )}
+
+    <!-- Bottom CTA -->
+    <div class="container session__footer-cta">
+      <p class="session__footer-cta-text">¿Te quedó alguna duda o ya sabes que quieres reservar?</p>
+      <WhatsAppCTA label={ctaLabel} />
+    </div>
+
   </article>
 </PageLayout>
 
@@ -93,12 +112,12 @@ const { Content } = await render(entry);
     margin-block-end: var(--space-xl);
   }
 
+  /* ── Editorial notice (markdown body from content file) ── */
+
   .session__body {
-    max-width: 60ch;
-    margin-block-end: var(--space-xl);
-    padding: var(--space-lg);
-    border-radius: 6px;
-    background-color: var(--color-surface);
+    padding-block: var(--space-lg);
+    border-block: 1px solid var(--color-surface-2);
+    max-width: 65ch;
     color: var(--color-text-secondary);
     font-size: 1.0625rem;
     line-height: 1.7;
@@ -108,9 +127,44 @@ const { Content } = await render(entry);
     margin-block: 0 var(--space-sm);
   }
 
+  .session__body :global(p:last-child) {
+    margin-block-end: 0;
+  }
+
   .session__body :global(strong) {
     color: var(--color-text);
     font-weight: 600;
   }
 
+  /* ── Bottom CTA ── */
+
+  .session__footer-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding-block: var(--space-xl);
+    border-block-start: 1px solid var(--color-surface-2);
+  }
+
+  .session__footer-cta-text {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    max-width: 50ch;
+  }
+
+  @media (min-width: 769px) {
+    .session__footer-cta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+    }
+
+    .session__footer-cta-text {
+      font-size: 1.0625rem;
+    }
+  }
 </style>

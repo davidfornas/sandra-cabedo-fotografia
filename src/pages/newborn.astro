@@ -1,5 +1,34 @@
 ---
 import SessionPage from '../components/SessionPage.astro';
+import type { FaqItem } from '../components/SessionFAQ.astro';
+
+const faqItems: FaqItem[] = [
+  {
+    q: '¿Cuándo es mejor reservar la sesión?',
+    a: 'Lo ideal es reservar durante el embarazo, entre las semanas 28 y 32. Así nos aseguramos de tener hueco en las fechas que mejor encajan y podemos planificarlo con calma.',
+  },
+  {
+    q: '¿Cuándo se realiza la sesión newborn?',
+    a: 'Durante los primeros 10–15 días de vida del bebé, que es cuando duermen más profundamente y podemos trabajar con más calma. Avisadme en cuanto nazca y buscamos el momento juntos.',
+  },
+  {
+    q: '¿Qué pasa si mi bebé no duerme o no está tranquilo?',
+    a: 'No pasa nada. Trabajamos completamente a su ritmo: si necesita comer, mamar o simplemente estar en brazos, paramos el tiempo que haga falta. La sesión se adapta a vosotros, no al revés.',
+  },
+  {
+    q: '¿Pueden participar los hermanos mayores?',
+    a: 'Por supuesto, los hermanos forman parte de la historia. Dedicamos un momento especial para capturar ese primer encuentro entre hermanos, que suele ser uno de los recuerdos más emocionantes.',
+  },
+  {
+    q: '¿Qué ropa debemos llevar?',
+    a: 'Para el bebé preparo telas, gorros y accesorios cálidos y neutros. Para vosotros, tonos suaves —tierra, blanco roto, beige— funcionan muy bien. Lo más importante es que os sintáis cómodos y como vosotros mismos.',
+  },
+  {
+    // TODO: Confirm exact session duration and update this answer
+    q: '¿Cuánto dura la sesión?',
+    a: 'Las sesiones newborn son tranquilas y sin prisas. Dejamos el tiempo que el bebé y la mamá necesiten, sin mirar el reloj. Os daré todos los detalles al confirmar la reserva.',
+  },
+];
 ---
 
 <SessionPage
@@ -8,4 +37,5 @@ import SessionPage from '../components/SessionPage.astro';
   seoTitle="Fotografía newborn en Castellón | Sandra Cabedo Fotografía"
   seoDescription="Fotografía newborn en Castellón: los primeros días y meses del bebé con calma, intimidad y naturalidad."
   ctaLabel="Reserva tu sesión"
+  faqItems={faqItems}
 />
