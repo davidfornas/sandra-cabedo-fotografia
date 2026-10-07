@@ -95,8 +95,10 @@ const conoceMeHref = withBase('/sobre-mi/');
   <Hero
     image={heroImage}
     alt="Padres sosteniendo a su recién nacido en un momento íntimo"
-    title="Fotografías de vuestra historia"
-    subtitle="Conservo los recuerdos naturales de vuestra familia."
+    title="Fotografía familiar en Castellón"
+    subtitle="Embarazo, recién nacido, infancia y familia. Sesiones tranquilas, sin prisas y adaptadas al ritmo de los más pequeños."
+    ctaLabel="Ver sesiones"
+    ctaHref="#sessions"
   />
 
   <XmasAnnouncement />
@@ -106,13 +108,17 @@ const conoceMeHref = withBase('/sobre-mi/');
       <div class="presentation__text">
         <SectionTitle as="h2" eyebrow="Sobre mí">Hola, soy Sandra</SectionTitle>
         <p>
-          Me dedico a la fotografía familiar y de la infancia en Castellón y alrededores.
-          Me gusta trabajar sin prisa, dejando que cada familia sea como es, para captar
-          los gestos, los abrazos y la naturalidad de vuestro día a día.
+          Soy fotógrafa familiar en Castellón y, sobre todo, me gusta que delante
+          de la cámara os sintáis cómodos.
         </p>
         <p>
-          Creo en las imágenes honestas, cálidas y luminosas, esas que dentro de unos años
-          os hagan recordar exactamente cómo os sentíais.
+          No espero que los niños estén quietos ni que sepan posar. Les doy tiempo
+          para conocerme, jugar y coger confianza. Y a los mayores os voy guiando
+          para que tampoco tengáis que preocuparos de qué hacer.
+        </p>
+        <p>
+          Me gustan las fotografías sencillas y luminosas, sin demasiados elementos
+          alrededor, donde vosotros seáis los protagonistas.
         </p>
       </div>
       <div class="presentation__media">
@@ -127,19 +133,19 @@ const conoceMeHref = withBase('/sobre-mi/');
         />
       </div>
       <p class="presentation__cta">
-        <a class="link-cta touch-target" href={conoceMeHref}>Conóceme más</a>
+        <a class="link-cta touch-target" href={conoceMeHref}>Conóceme un poco más</a>
       </p>
     </div>
   </section>
 
-  <section class="section sessions">
+  <section id="sessions" class="section sessions">
     <div class="container">
       <SectionTitle as="h2" eyebrow="Experiencias" align="center">
-        Tipos de sesión
+        ¿Qué momento quieres recordar?
       </SectionTitle>
       <p class="sessions__intro">
-        Cada etapa merece su propia mirada. Estas son las experiencias fotográficas que
-        acompaño en Castellón y alrededores.
+        Puedes hacer tu sesión en mi estudio privado en Castellón o en exteriores.
+        Elige la etapa en la que estáis y te cuento cómo la plantearemos.
       </p>
       <div class="sessions__grid">
         {
@@ -171,18 +177,35 @@ const conoceMeHref = withBase('/sobre-mi/');
       </div>
       */}
       <div class="children__text">
-        <SectionTitle as="h2" eyebrow="Con los peques">Que se sientan como en casa</SectionTitle>
+        <SectionTitle as="h2" eyebrow="Con los peques">Ellos solo tienen que ser niños</SectionTitle>
         <p>
-          Las sesiones con niños buscan que estén cómodos y se comporten con total
-          naturalidad. Sin prisas ni poses imposibles: jugamos, exploramos y dejamos que
-          las fotos surjan solas.
+          No espero que un niño llegue al estudio y se ponga a posar. Primero nos
+          conocemos, pueden jugar, curiosear y coger confianza. La cámara puede esperar.
         </p>
         <p>
-          Cuento con un estudio privado con zona de juego, minirocódromo y una cama elástica que
-          ayuda a los peques a relajarse y divertirse, antes y durante la sesión. Es parte
-          de la experiencia, un lugar pensado para que se sientan libres.
+          El estudio tiene una zona preparada para ellos, con juegos, minirocódromo y
+          una cama elástica que suele ser todo un éxito. Muchas veces ese rato es justo
+          lo que necesitan para olvidarse de la cámara y empezar la sesión mucho más relajados.
+        </p>
+        <p>
+          Y si necesitan parar durante la sesión, paramos. No pasa nada.
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="section studio">
+    <div class="container">
+      <SectionTitle as="h2" eyebrow="El espacio">En el estudio o al aire libre</SectionTitle>
+      <p class="studio__text">
+        El estudio es un espacio privado en Castellón, pensado para trabajar con
+        tranquilidad y siempre con cita previa. Es fácil aparcar cerca, algo
+        especialmente práctico cuando venís con niños pequeños.
+      </p>
+      <p class="studio__text">
+        Para algunas sesiones también podemos salir al exterior. Antes de reservar
+        hablamos de lo que buscas y te recomiendo la opción que mejor encaje con vosotros.
+      </p>
     </div>
   </section>
 
@@ -223,15 +246,31 @@ const conoceMeHref = withBase('/sobre-mi/');
     </div>
   </section>
 
+  {site.google.reviewsUrl !== '' && (
+    <section class="section reviews">
+      <div class="container reviews__inner">
+        <SectionTitle as="h2" align="center">Lo que cuentan las familias</SectionTitle>
+        <a
+          href={site.google.reviewsUrl}
+          class="reviews__cta touch-target"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver todas las reseñas en Google&thinsp;↗
+        </a>
+      </div>
+    </section>
+  )}
+
   <section class="section contact">
     <div class="container contact__inner">
-      <SectionTitle as="h2" align="center">Reserva tu sesión</SectionTitle>
+      <SectionTitle as="h2" align="center">¿Hablamos de vuestra sesión?</SectionTitle>
       <p class="contact__text">
-        Contadme qué tipo de sesión os gustaría y cómo es vuestra familia. Estaré encantada
-        de ayudaros a conservar vuestros recuerdos. Trabajo en Castellón y alrededores.
+        Cuéntame qué tipo de sesión tienes en mente, cuántos sois y la edad de los
+        peques. Te explicaré las opciones y veremos qué fecha os viene bien.
       </p>
       <div class="contact__actions">
-        <WhatsAppCTA label="Hablemos por WhatsApp" variant="primary" />
+        <WhatsAppCTA label="Escribir a Sandra por WhatsApp" variant="primary" />
         <InstagramCTA label="Contáctame en Instagram" variant="secondary" target="dm" />
       </div>
     </div>
@@ -347,6 +386,45 @@ const conoceMeHref = withBase('/sobre-mi/');
     font-family: var(--font-body);
     color: var(--color-text-secondary);
     line-height: 1.65;
+  }
+
+  /* Studio / outdoor section */
+  .studio__text {
+    max-width: 58ch;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-block: var(--space-sm) 0;
+  }
+
+  /* Reviews section */
+  .reviews__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .reviews__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding-inline: var(--space-md);
+    padding-block: var(--space-2xs);
+    border-radius: 999px;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .reviews__cta:hover,
+  .reviews__cta:focus-visible {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
   }
 
   @media (min-width: 768px) {

@@ -14,6 +14,7 @@ const ALLOWED_LABELS = [
   'Hablemos',
   'Consultar disponibilidad',
   'Hablemos por WhatsApp',
+  'Escribir a Sandra por WhatsApp',
 ] as const;
 
 /**
@@ -61,7 +62,8 @@ type WhatsAppLabel =
   | 'Reserva tu sesión'
   | 'Hablemos'
   | 'Consultar disponibilidad'
-  | 'Hablemos por WhatsApp';
+  | 'Hablemos por WhatsApp'
+  | 'Escribir a Sandra por WhatsApp';
 
 type AssertAllowedAreLabels = (typeof ALLOWED_LABELS)[number] extends WhatsAppLabel
   ? true

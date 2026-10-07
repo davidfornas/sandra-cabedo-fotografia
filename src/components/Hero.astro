@@ -9,9 +9,12 @@ interface Props {
   alt: string;
   title: string;
   subtitle: string;
+  /** When provided, renders a plain styled anchor instead of the WhatsApp CTA. */
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
-const { image, alt, title, subtitle } = Astro.props;
+const { image, alt, title, subtitle, ctaLabel, ctaHref } = Astro.props;
 ---
 
 <section class="hero">
@@ -30,7 +33,10 @@ const { image, alt, title, subtitle } = Astro.props;
     <SectionTitle as="h1" align="start" class="hero__title">{title}</SectionTitle>
     <p class="hero__subtitle">{subtitle}</p>
     <div class="hero__cta">
-      <WhatsAppCTA label="Reserva tu sesión" variant="primary" />
+      {ctaHref && ctaLabel
+        ? <a href={ctaHref} class="hero__link-cta touch-target">{ctaLabel}</a>
+        : <WhatsAppCTA label="Reserva tu sesión" variant="primary" />
+      }
     </div>
   </div>
 </section>
@@ -108,8 +114,33 @@ const { image, alt, title, subtitle } = Astro.props;
     margin-block-start: var(--space-2xs);
   }
 
-  .hero__cta :global(.whatsapp-cta) {
+  /* Plain link CTA variant — same shape and weight as the WhatsApp button */
+  .hero__link-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 48px;
+    padding-inline: var(--space-md);
+    padding-block: var(--space-2xs);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    background-color: #AD6439;
+    border: 1px solid #AD6439;
+    color: #FFF9F4;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .hero__link-cta:hover,
+  .hero__link-cta:focus-visible {
+    background-color: #93522D;
+    border-color: #93522D;
+  }
+
+  .hero__cta :global(.whatsapp-cta) {    min-height: 48px;
   }
 
   .hero__cta :global(.whatsapp-cta--primary) {
