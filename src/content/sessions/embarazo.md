@@ -1,8 +1,8 @@
 ---
 title: Embarazo
 description: >-
-  Fotografía de embarazo natural y emocional que celebra la espera. Retratos
-  serenos que capturan la ilusión de estas semanas antes de conocer al bebé.
+  Una sesión para fotografiar esta etapa antes de que llegue el bebé. Puedes
+  hacerla sola, en pareja o en familia si ya hay hermanos mayores.
 coverImage: ../../images/sessions/embarazo/IMG_9190.jpg
 coverAlt: Mujer embarazada acariciando su vientre con luz suave
 images:
@@ -24,6 +24,10 @@ images:
 provisional: false
 ---
 
-**La espera también forma parte de vuestra historia**
+## No necesitas saber posar
 
-Hay momentos que parecen eternos y, sin embargo, pasan demasiado rápido. Guardemos un recuerdo de estas semanas, de la ilusión, de la espera y de todo lo que está a punto de cambiar.
+Durante la sesión te iré guiando para encontrar posturas en las que te sientas cómoda y que favorezcan los cambios de tu cuerpo durante el embarazo.
+
+También habrá fotografías con tu pareja y con los hermanos mayores si queréis que participen. No buscamos hacer muchas poses diferentes, sino una selección sencilla y cuidada en la que te reconozcas.
+
+Podemos hacer la sesión en el estudio o en exteriores y, antes de reservar, hablamos de qué opción encaja mejor contigo y con el tipo de fotografías que buscas.

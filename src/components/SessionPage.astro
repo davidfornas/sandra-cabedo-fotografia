@@ -133,6 +133,15 @@ const { Content } = await render(entry);
     margin-block-end: 0;
   }
 
+  .session__body :global(h2) {
+    font-family: var(--font-title);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin: 0 0 var(--space-md);
+  }
+
   .session__body :global(strong) {
     color: var(--color-text);
     font-weight: 600;

@@ -1,7 +1,10 @@
 ---
 title: Crecer juntos
 description: >-
-  Una historia que se construye poco a poco: desde la espera y los primeros días hasta cada nueva etapa. Recuerdos para ver cómo crece vuestra familia.
+  Crecer Juntos es volver a encontrarnos con el paso del tiempo. Cumpleaños,
+  celebraciones, nuevos hermanos o simplemente una nueva etapa de vuestra
+  familia. Porque no hace falta una ocasión especial para volver a hacer fotos
+  juntos.
 coverImage: ../../images/sessions/crecer-juntos/Sofia 02.jpg
 coverAlt: Niña jugando con naturalidad durante una sesión de familia
 images:
@@ -17,10 +20,12 @@ images:
 provisional: false
 ---
 
-Hay momentos que parecen pequeños hasta que pasa el tiempo.
+## La primera sesión puede ser solo el principio
 
-El embarazo, sus primeros días, los primeros pasos, los cumpleaños y todas esas etapas que van transformando vuestra familia casi sin daros cuenta.
+Quizá nos conozcamos durante el embarazo. O cuando vuestro bebé tenga unos meses. Puede que la primera vez sea una sesión de familia o incluso una Navidad.
 
-**Crecer juntos** es una forma de acompañaros a lo largo de esos años, creando recuerdos que hablan de cómo eran, de cómo erais y de todo lo que habéis vivido juntos.
+Y después podemos volver a encontrarnos.
 
-Porque no se trata solamente de fotografiar un momento, sino de **ver crecer vuestra historia**.
+En un cumpleaños, cuando llegue un hermano, en una celebración familiar o simplemente porque han pasado unos años y aquellos niños que jugaban delante de mi cámara ahora quieren hacerse fotos «como los mayores».
+
+Eso es Crecer Juntos: acompañar a las mismas familias en distintos momentos de su vida y ver cómo van cambiando con el paso del tiempo.

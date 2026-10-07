@@ -1,9 +1,9 @@
 ---
 title: Newborn
 description: >-
-  Fotografía centrada en los primeros días y meses del bebé: calma,
-  intimidad y naturalidad. Sesiones tranquilas que respetan el ritmo del recién
-  nacido para conservar la delicadeza de sus primeras semanas.
+  Fotografías de los primeros días y meses de vuestro bebé, desde una sesión de
+  recién nacido hasta sus cambios durante el primer año. Solo, con vosotros y
+  también con sus hermanos.
 coverImage: ../../images/sessions/newborn/IMG_0020.jpg
 coverAlt: Recién nacido dormido acurrucado entre las manos de sus padres
 images:
@@ -34,5 +34,12 @@ images:
 provisional: false
 ---
 
-En las sesiones trabajamos sin prisa, respetando el
-sueño y el ritmo del recién nacido, así como el de su mamá.
+## Como en casa
+
+Me gusta fotografiar estos primeros meses de una forma sencilla y cercana, buscando escenas que recuerden a vuestro día a día: tener al bebé en brazos, estar juntos en la cama, darle de comer, calmarlo o simplemente observarlo mientras duerme.
+
+En el estudio trabajamos con esa misma sensación de hogar, en espacios sencillos y con pocos elementos alrededor para que el protagonismo sea vuestro y del bebé. Y en las primeras semanas, si encaja mejor con vuestra familia, la sesión también puede hacerse en vuestra propia casa.
+
+Una sesión con un bebé de 15 días no es igual que una a los 3, 6 o 9 meses. Nos adaptamos a lo que hace en ese momento: al principio habrá más brazos, sueño y pequeños detalles; después llegarán las miradas, las sonrisas, sentarse, gatear y querer descubrirlo todo.
+
+No hay problema si necesita comer, cambiarse, dormir o parar un rato. La sesión se adapta a él, no al revés.
