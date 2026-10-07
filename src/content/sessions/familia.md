@@ -31,10 +31,10 @@ images:
 provisional: false
 ---
 
-## No hace falta venir sabiendo qué hacer
+## Un rato para estar juntos
 
-Al empezar os iré guiando para que nadie tenga que preguntarse dónde ponerse o qué hacer. Pero tampoco quiero que toda la sesión consista en colocaros y mirar a cámara.
+Durante la sesión os propondré pequeñas cosas que hacer juntos: jugar, moveros, acercaros, hablar... Yo os iré guiando cuando haga falta, pero dejando espacio para que pasen cosas entre vosotros.
 
-Con los niños iremos jugando, moviéndonos y adaptándonos a ellos. Os propondré pequeñas cosas que hacer juntos para que la sesión no consista simplemente en colocaros delante de la cámara. Si necesitan un rato para coger confianza, se lo damos. Y si ese día tienen otros planes, buscamos la manera de seguir sin convertir las fotos en una obligación.
+Con los niños nos adaptamos a su edad y a cómo estén ese día. Si necesitan un rato para coger confianza, se lo damos. Y si tienen otros planes, buscamos la manera de seguir sin convertir las fotos en una obligación.
 
 Podemos hacer la sesión en el estudio o en exteriores. Antes hablamos de la edad de los peques y del tipo de fotografías que os gustaría tener para elegir la opción que mejor os encaje.

@@ -24,10 +24,10 @@ images:
 provisional: false
 ---
 
-## No necesitas saber posar
+## Una sesión a tu manera
 
-Durante la sesión te iré guiando para encontrar posturas en las que te sientas cómoda y que favorezcan los cambios de tu cuerpo durante el embarazo.
+Durante la sesión iremos buscando fotografías en las que te sientas cómoda y te reconozcas en esta etapa. Te iré guiando cuando haga falta, así que no necesitas venir sabiendo qué hacer delante de la cámara.
 
-También habrá fotografías con tu pareja y con los hermanos mayores si queréis que participen. No buscamos hacer muchas poses diferentes, sino una selección sencilla y cuidada en la que te reconozcas.
+Puedes hacerla sola o compartir parte de la sesión con tu pareja y con los hermanos mayores si queréis que participen.
 
-Podemos hacer la sesión en el estudio o en exteriores y, antes de reservar, hablamos de qué opción encaja mejor contigo y con el tipo de fotografías que buscas.
+Podemos hacerla en el estudio o en exteriores y, antes de reservar, hablamos de qué opción encaja mejor contigo y con el tipo de fotografías que buscas.
