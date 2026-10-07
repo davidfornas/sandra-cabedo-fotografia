@@ -3,14 +3,14 @@ import PageLayout from '../layouts/PageLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import ImageFrame from '../components/ImageFrame.astro';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
-import InstagramCTA from '../components/InstagramCTA.astro';
-import { site } from '../config/site';
-import portrait from '../images/sandra/P1011793 copia.jpg';
+
+import portrait1 from '../images/sandra/P1011793 copia.jpg';
+import portrait2 from '../images/sandra/IMG_2287.jpg';
 
 const seo = {
-  title: 'Sobre mí · Sandra Cabedo Fotografía',
+  title: 'Sobre mí | Sandra Cabedo Fotografía',
   description:
-    'Conoce a Sandra Cabedo, fotógrafa familiar en Castellón y alrededores. Fotografía natural que conserva vuestros recuerdos con cercanía y sensibilidad.',
+    'Conoce a Sandra Cabedo, fotógrafa de embarazo, recién nacido, infancia y familia en Castellón, y descubre cómo son sus sesiones.',
   path: '/sobre-mi/',
 };
 ---
@@ -21,88 +21,335 @@ const seo = {
   path={seo.path}
   activePath="/sobre-mi/"
 >
-  <section class="about section">
-    <div class="about__grid container">
-      <div class="about__media">
+
+  <!-- ── INTRO ──────────────────────────────────────────── -->
+  <section class="am-intro section">
+    <div class="container am-intro__inner">
+
+      <div class="am-intro__text">
+        <h1 class="am-intro__h1">Hola, soy Sandra</h1>
+        <p class="am-intro__lead">
+          Soy fotógrafa familiar en Castellón, madre de dos y la persona que encontrarás
+          detrás de la cámara cuando vengas a una sesión.
+        </p>
+      </div>
+
+      <div class="am-intro__media">
         <ImageFrame
-          src={portrait}
-          alt="Retrato de Sandra Cabedo, fotógrafa familiar en Castellón"
-          width={800}
-          height={1200}
+          src={portrait1}
+          alt="Sandra Cabedo, fotógrafa familiar en Castellón"
+          width={1600}
+          height={2400}
           loading="eager"
-          sizes="(min-width: 1024px) 40vw, 90vw"
-          class="about__portrait"
+          fetchpriority="high"
+          sizes="(min-width: 1024px) 36vw, 90vw"
+          class="am-portrait"
         />
       </div>
 
-      <div class="about__body">
-        <SectionTitle as="h1" eyebrow="Conóceme">Sobre mí</SectionTitle>
+    </div>
+  </section>
 
-        <p class="about__lead">
-          Soy Sandra, y me dedico a la fotografía familiar en {site.brand.locationLabel}.
-          Me gusta acompañaros con calma, sin prisas ni poses forzadas, para que cada
-          imagen refleje cómo sois de verdad: vuestros gestos, vuestras risas y esos
-          instantes cotidianos que merecen quedarse para siempre.
+  <!-- ── STORY ──────────────────────────────────────────── -->
+  <section class="am-story section">
+    <div class="container">
+      <div class="am-story__body">
+        <p>
+          Durante años trabajé haciendo fotografía para otros, pero fue con la maternidad
+          cuando empecé a mirar las fotos de otra manera.
         </p>
-
-        <p class="about__text">
-          Trabajo con luz natural y un estilo cercano, buscando que os sintáis cómodos
-          y que los peques disfruten del momento. Más que una sesión, me gusta pensar
-          que creamos un recuerdo de vuestra historia tal y como la vivís.
+        <p>
+          De repente fui mucho más consciente de lo rápido que cambian los niños. Gestos,
+          expresiones y pequeñas cosas del día a día que en ese momento parecen normales
+          y que, casi sin darte cuenta, desaparecen.
         </p>
-
-        <p class="about__note">
-          <!-- Texto provisional de demostración. La biografía definitiva de Sandra se
-          incorporará con el contenido real del proyecto. -->
+        <p>
+          Poco a poco fui encontrando mi sitio en la fotografía de embarazo, recién nacido,
+          infancia y familia.
         </p>
-
-        <div class="about__cta">
-          <WhatsAppCTA label="Hablemos" variant="primary" />
-          <InstagramCTA label="Conóceme más" variant="secondary" />
-        </div>
       </div>
     </div>
   </section>
+
+  <!-- ── HOW I WORK ─────────────────────────────────────── -->
+  <section class="am-how section">
+    <div class="container">
+      <SectionTitle as="h2">Cuando hay niños, no todo sale según el plan</SectionTitle>
+      <div class="am-how__body">
+        <p>Y está bien.</p>
+        <p>
+          Como madre sé que puedes preparar una sesión con toda la ilusión del mundo y que
+          ese día tu hijo decida que no quiere fotos, que necesita estar contigo o que
+          simplemente tiene otros planes.
+        </p>
+        <p>
+          Por eso no espero que lleguen al estudio y empiecen a posar. Les doy tiempo para
+          conocerme y sentirse cómodos. Pueden jugar, saltar en la cama elástica o explorar
+          el espacio antes de empezar.
+        </p>
+        <p>Durante la sesión tampoco pasa nada si necesitamos parar. Nos adaptamos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STYLE + SECOND PORTRAIT ────────────────────────── -->
+  <section class="am-style section">
+    <div class="container am-style__inner">
+
+      <div class="am-style__text">
+        <SectionTitle as="h2">Mi forma de fotografiar</SectionTitle>
+        <div class="am-style__body">
+          <p>
+            Me gustan las fotografías sencillas y luminosas, con pocos elementos alrededor
+            y con vosotros como protagonistas.
+          </p>
+          <p>
+            Os guío cuando hace falta, pero no busco que todo esté perfectamente colocado
+            ni que los niños miren siempre a cámara. Muchas veces las fotos que más me
+            gustan aparecen justo entre una cosa y otra.
+          </p>
+        </div>
+      </div>
+
+      <div class="am-style__media">
+        <ImageFrame
+          src={portrait2}
+          alt="Sandra Cabedo preparando una sesión fotográfica"
+          width={1600}
+          height={2400}
+          loading="lazy"
+          sizes="(min-width: 1024px) 36vw, 90vw"
+          class="am-portrait"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PERSONAL ───────────────────────────────────────── -->
+  <section class="am-personal section">
+    <div class="container">
+      <SectionTitle as="h2">Y fuera de la cámara...</SectionTitle>
+      <div class="am-personal__body">
+        <p>
+          Soy madre de dos, me encanta bailar y, aunque resulte curioso siendo fotógrafa,
+          ponerme delante de una cámara también me da bastante vergüenza.
+        </p>
+        <p>
+          Así que si llegas diciendo que no sabes posar o que no te gusta salir en las
+          fotos, probablemente te entienda bastante bien.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STUDIO ─────────────────────────────────────────── -->
+  <section class="am-studio">
+    <div class="container am-studio__inner">
+      <SectionTitle as="h2" eyebrow="El estudio">Mi estudio</SectionTitle>
+      <div class="am-studio__body">
+        <p>
+          Trabajo en un estudio privado en Castellón, exclusivamente con cita previa. Es un
+          espacio tranquilo y preparado también para los más pequeños, con zona de juegos,
+          minirocódromo y cama elástica.
+        </p>
+        <p>
+          Además, es fácil aparcar cerca, algo que se agradece especialmente cuando venís
+          con niños o con un bebé.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ──────────────────────────────────────── -->
+  <section class="am-cta section">
+    <div class="container am-cta__inner">
+      <h2 class="am-cta__heading">¿Nos conocemos?</h2>
+      <p class="am-cta__text">
+        Si estás pensando en hacer una sesión, cuéntame quiénes sois y qué tienes en mente.
+        Te explicaré cómo trabajo y veremos qué opción encaja mejor con vosotros.
+      </p>
+      <WhatsAppCTA label="Escríbeme por WhatsApp" variant="primary" />
+    </div>
+  </section>
+
 </PageLayout>
 
 <style>
-  .about__grid {
+  /* ── Shared text defaults ─────────────────────────────── */
+
+  .am-story__body > p,
+  .am-how__body > p,
+  .am-style__body > p,
+  .am-personal__body > p,
+  .am-studio__body > p {
+    margin: 0;
+    max-width: 58ch;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  /* ── INTRO ────────────────────────────────────────────── */
+
+  .am-intro__inner {
     display: grid;
-    gap: var(--space-lg);
-    align-items: center;
+    gap: var(--space-xl);
+    align-items: start;
   }
 
-  .about__portrait {
-    border-radius: var(--radius-md, 8px);
+  .am-intro__h1 {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 9vw, 3.75rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    margin: 0 0 var(--space-md);
   }
 
-  .about__body {
+  .am-intro__lead {
+    margin: 0;
+    max-width: 50ch;
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .am-portrait {
+    border-radius: 4px;
+  }
+
+  /* ── STORY ────────────────────────────────────────────── */
+
+  .am-story__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Each story paragraph sits between thin horizontal rules,
+     creating an editorial cadence without heavy visual noise. */
+  .am-story__body > p {
+    padding-block: var(--space-md);
+    border-block-start: 1px solid var(--color-surface-2);
+  }
+
+  .am-story__body > p:last-child {
+    border-block-end: 1px solid var(--color-surface-2);
+  }
+
+  /* ── HOW I WORK ───────────────────────────────────────── */
+
+  .am-how__body {
+    margin-block-start: var(--space-md);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
   }
 
-  .about__lead {
-    font-size: 1.125rem;
+  /* ── STYLE ────────────────────────────────────────────── */
+
+  .am-style__inner {
+    display: grid;
+    gap: var(--space-xl);
+    align-items: start;
   }
 
-  .about__note {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    font-style: italic;
-  }
-
-  .about__cta {
+  .am-style__body {
+    margin-block-start: var(--space-md);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-sm);
-    margin-top: var(--space-2xs);
   }
+
+  /* ── PERSONAL ─────────────────────────────────────────── */
+
+  /* Slightly lighter background to signal the informal tone
+     without breaking the visual language of the page. */
+  .am-personal {
+    background-color: var(--color-surface);
+  }
+
+  .am-personal__body {
+    margin-block-start: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  /* ── STUDIO ───────────────────────────────────────────── */
+
+  .am-studio {
+    padding-block: var(--space-xl);
+    border-block: 1px solid var(--color-surface-2);
+  }
+
+  .am-studio__body {
+    margin-block-start: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  /* ── FINAL CTA ────────────────────────────────────────── */
+
+  .am-cta__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .am-cta__heading {
+    font-family: var(--font-title);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .am-cta__text {
+    margin: 0;
+    max-width: 50ch;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  /* ── DESKTOP (≥ 1024px) ───────────────────────────────── */
 
   @media (min-width: 1024px) {
-    .about__grid {
-      grid-template-columns: 2fr 3fr;
-      gap: var(--space-xl);
+    /* Intro: text (wider) + portrait (narrower) side by side */
+    .am-intro__inner {
+      grid-template-columns: 3fr 2fr;
+      gap: var(--space-2xl);
     }
+
+    /* Style: text left, portrait right */
+    .am-style__inner {
+      grid-template-columns: 3fr 2fr;
+      gap: var(--space-2xl);
+    }
+  }
+
+  /* ── TABLET (768–1023px) ──────────────────────────────── */
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    /* On tablet, show portraits at a comfortable width
+       without forcing a full 2-column grid */
+    .am-intro__media,
+    .am-style__media {
+      max-width: 60%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* Nothing animated on this page; placeholder in case additions are made */
   }
 </style>
