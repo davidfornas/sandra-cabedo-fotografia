@@ -1,7 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
-import { site } from '../config/site';
 import { whatsappUrlWithMessage } from '../lib/whatsapp';
 
 const CHRISTMAS_MESSAGE = 'Hola Sandra 😊 Me gustaría reservar una sesión de Navidad.';
@@ -28,9 +27,9 @@ const seo = {
       <p class="xmas-hero__eyebrow">Navidad 2026</p>
       <h1 class="xmas-hero__heading">Una Navidad<br class="xmas-br" /> para recordar</h1>
       <p class="xmas-hero__body">
-        Sesiones fotográficas cálidas y naturales para conservar la Navidad de
-        vuestra familia tal y como la vivís: entre risas, abrazos y esos pequeños
-        gestos que hacen que estas fechas sean únicas.
+        Un pequeño escenario de Navidad, un rato para disfrutar en familia y fotografías
+        que os llevaréis de estas fiestas. Los peques pueden jugar, explorar el decorado
+        y pasarlo bien mientras hacemos las fotos.
       </p>
       {ctaUrl && (
         <a
@@ -47,13 +46,20 @@ const seo = {
 
   <!-- ── INSTAGRAM REEL ── -->
   <section class="xmas-reel-section">
-    <div class="container">
+    <div class="container xmas-reel-section__inner">
+      <div class="xmas-reel-section__text">
+        <h2 class="xmas-reel-section__heading">¿Quieres ver el decorado de este año?</h2>
+        <p class="xmas-reel-section__desc">
+          Ya tenemos preparado nuestro rincón de Navidad. En este vídeo puedes descubrir
+          cómo ha quedado el escenario que nos acompañará en las sesiones de 2026.
+        </p>
+      </div>
       <a
         href="https://www.instagram.com/sandracabedofotografia/reel/DeFM9atp8Uq/"
         class="xmas-reel"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Ver el Reel de Navidad de Sandra Cabedo Fotografía en Instagram"
+        aria-label="Ver el decorado de Navidad 2026 en Instagram"
       >
         <div class="xmas-reel__play" aria-hidden="true">
           <svg viewBox="0 0 48 48" width="40" height="40" fill="none" aria-hidden="true">
@@ -62,7 +68,7 @@ const seo = {
           </svg>
         </div>
         <div class="xmas-reel__text">
-          <p class="xmas-reel__label">Reel de Navidad 2026</p>
+          <p class="xmas-reel__label">Ver el decorado de Navidad</p>
           <p class="xmas-reel__action">Ver en Instagram&thinsp;↗</p>
         </div>
       </a>
@@ -77,14 +83,14 @@ const seo = {
       </SectionTitle>
       <div class="xmas-info__body">
         <p>
-          Las sesiones de Navidad son espacios tranquilos y sin guión, donde lo
-          importante es que vuestra familia se sienta cómoda. Trabajamos en estudio
-          privado con una ambientación cálida y sencilla en Castellón, sin poses
-          forzadas ni decorados artificiales.
+          Cada año preparo un rincón especial de Navidad en mi estudio de Castellón.
+          Un espacio acogedor donde los niños pueden descubrir el decorado, jugar y
+          compartir un rato con vosotros.
         </p>
         <p>
-          El resultado son imágenes honestas que reflejan cómo sois: vuestros abrazos,
-          vuestras risas y esa calidez que solo existe en familia.
+          Os iré guiando durante la sesión, pero sin esperar que los peques estén
+          quietos todo el tiempo. La idea es que disfrutéis juntos mientras hacemos
+          fotografías de esta Navidad.
         </p>
 
         <!--
@@ -117,10 +123,11 @@ const seo = {
   <section class="xmas-booking">
     <div class="container xmas-booking__inner">
       <SectionTitle as="h2" align="center">
-        ¿Creamos vuestro recuerdo de Navidad?
+        ¿Nos vemos esta Navidad?
       </SectionTitle>
       <p class="xmas-booking__body">
-        Las reservas para las sesiones de Navidad 2026 ya están abiertas.
+        La agenda de Navidad 2026 ya está abierta. Escríbeme y te cuento cómo son
+        las sesiones y qué fechas tenemos disponibles.
       </p>
       {ctaUrl && (
         <a
@@ -129,7 +136,7 @@ const seo = {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Quiero reservar
+          Consultar disponibilidad
         </a>
       )}
     </div>
@@ -185,14 +192,43 @@ const seo = {
     color: var(--color-text-secondary);
   }
 
-  /* ─── REEL CARD ─────────────────────────────── */
+  /* ─── REEL SECTION ──────────────────────────── */
 
   .xmas-reel-section {
-    padding-block: var(--space-lg) var(--space-xl);
+    padding-block: var(--space-xl);
+    border-block-start: 1px solid var(--color-surface-2);
   }
 
-  .xmas-reel {
+  .xmas-reel-section__inner {
     display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 600px;
+  }
+
+  .xmas-reel-section__heading {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-title);
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+  }
+
+  .xmas-reel-section__desc {
+    margin: 0;
+    max-width: 58ch;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+
+  /* ─── REEL CARD ─────────────────────────────── */
+
+  .xmas-reel {
+    display: inline-flex;
     align-items: center;
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
@@ -202,13 +238,18 @@ const seo = {
     text-decoration: none;
     color: var(--color-text);
     transition: border-color 160ms ease, background-color 160ms ease;
-    max-width: 540px;
+    align-self: flex-start;
   }
 
   .xmas-reel:hover,
   .xmas-reel:focus-visible {
     border-color: var(--color-accent);
     background-color: var(--color-surface);
+  }
+
+  .xmas-reel:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 
   .xmas-reel__play {
@@ -225,7 +266,7 @@ const seo = {
   .xmas-reel__label {
     margin: 0;
     font-family: var(--font-title);
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.2;
     color: var(--color-text);
   }
