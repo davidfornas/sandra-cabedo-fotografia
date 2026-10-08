@@ -17,6 +17,39 @@ images:
   - src: ../../images/sessions/crecer-juntos/Sofia 05.jpg
     alt: Retrato de infancia lleno de ternura y autenticidad
     orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_0303.jpg
+    alt: Retrato infantil en un momento de tranquilidad
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_0312.jpg
+    alt: Familia disfrutando juntos en un instante espontáneo
+    orientation: landscape
+  - src: ../../images/sessions/crecer-juntos/IMG_0340-Editar copia.jpg
+    alt: Niño en un retrato cercano y luminoso
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_1010.jpg
+    alt: Retrato de infancia con naturalidad y luz cálida
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_1082.jpg
+    alt: Niño en un instante auténtico y espontáneo
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_1085.jpg
+    alt: Retrato infantil con presencia y luz suave
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_2009.jpg
+    alt: Familia en un momento cálido y cercano
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_2037.jpg
+    alt: Instante familiar con ternura y naturalidad
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_9595.jpg
+    alt: Retrato de familia en un momento íntimo
+    orientation: portrait
+  - src: ../../images/sessions/crecer-juntos/IMG_9601.jpg
+    alt: Familia en un instante de complicidad y luz natural
+    orientation: landscape
+  - src: ../../images/sessions/crecer-juntos/IMG_9605.jpg
+    alt: Momento familiar espontáneo con luz cálida
+    orientation: landscape
 provisional: false
 ---
 

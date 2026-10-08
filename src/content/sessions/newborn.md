@@ -31,6 +31,12 @@ images:
   - src: ../../images/sessions/newborn/IMG_1489.jpg
     alt: Primer plano del bebé recién nacido
     orientation: landscape
+  - src: ../../images/sessions/newborn/01 copia.jpg
+    alt: Bebé recién nacido en un primer plano íntimo
+    orientation: landscape
+  - src: ../../images/sessions/newborn/04 copia.jpg
+    alt: Detalle de los primeros días del bebé con luz suave
+    orientation: landscape
 provisional: false
 ---
 

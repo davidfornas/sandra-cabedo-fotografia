@@ -28,6 +28,15 @@ images:
   - src: ../../images/sessions/familia/IMG_1927.jpg
     alt: Familia en un momento espontáneo lleno de calidez y naturalidad
     orientation: landscape
+  - src: ../../images/sessions/familia/06.jpg
+    alt: Familia en un momento espontáneo con luz natural
+    orientation: landscape
+  - src: ../../images/sessions/familia/07 copia.jpg
+    alt: Retrato familiar en un instante íntimo y cercano
+    orientation: portrait
+  - src: ../../images/sessions/familia/08 copia.jpg
+    alt: Momento de complicidad familiar capturado con naturalidad
+    orientation: portrait
 provisional: false
 ---
 
