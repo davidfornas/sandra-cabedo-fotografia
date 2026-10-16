@@ -30,6 +30,9 @@ const { title, description, path, ogImage, activePath } = Astro.props as BaseLay
     />
 
     <Seo title={title} description={description} path={path} ogImage={ogImage} />
+    <!-- Cloudflare Web Analytics -->
+    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d009472050d946d5bbc13dfeeefd993e"}'></script>
+    <!-- End Cloudflare Web Analytics -->
   </head>
   <body data-active-path={activePath}>
     <a class="skip-link" href="#main">Saltar al contenido</a>
