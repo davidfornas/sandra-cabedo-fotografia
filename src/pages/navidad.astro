@@ -1,7 +1,10 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import ImageFrame from '../components/ImageFrame.astro';
 import { whatsappUrlWithMessage } from '../lib/whatsapp';
+import xmasImg1 from '../images/navidad/IMG_2784.jpg';
+import xmasImg2 from '../images/navidad/IMG_2869-Editar.jpg';
 
 const CHRISTMAS_MESSAGE = 'Hola Sandra 😊 Me gustaría reservar una sesión de Navidad.';
 const ctaUrl = whatsappUrlWithMessage(CHRISTMAS_MESSAGE);
@@ -78,43 +81,61 @@ const seo = {
   <!-- ── SESSION INFO ── -->
   <section class="xmas-info section">
     <div class="container xmas-info__inner">
-      <SectionTitle as="h2" eyebrow="Las sesiones">
-        Fotografía de Navidad en Castellón
-      </SectionTitle>
-      <div class="xmas-info__body">
-        <p>
-          Cada año preparo un rincón especial de Navidad en mi estudio de Castellón.
-          Un espacio acogedor donde los niños pueden descubrir el decorado, jugar y
-          compartir un rato con vosotros.
-        </p>
-        <p>
-          Os iré guiando durante la sesión, pero sin esperar que los peques estén
-          quietos todo el tiempo. La idea es que disfrutéis juntos mientras hacemos
-          fotografías de esta Navidad.
-        </p>
+      <div class="xmas-info__text">
+        <SectionTitle as="h2" eyebrow="Las sesiones">
+          Fotografía de Navidad en Castellón
+        </SectionTitle>
+        <div class="xmas-info__body">
+          <p>
+            Cada año preparo un rincón especial de Navidad en mi estudio de Castellón.
+            Un espacio acogedor donde los niños pueden descubrir el decorado, jugar y
+            compartir un rato con vosotros.
+          </p>
+          <p>
+            Os iré guiando durante la sesión, pero sin esperar que los peques estén
+            quietos todo el tiempo. La idea es que disfrutéis juntos mientras hacemos
+            fotografías de esta Navidad.
+          </p>
 
-        <!--
-          Session details — uncomment and fill in when confirmed:
+          <!--
+            Session details — uncomment and fill in when confirmed:
 
-          <dl class="xmas-info__details">
-            <div class="xmas-info__detail">
-              <dt>Fechas</dt>
-              <dd>Por determinar</dd>
-            </div>
-            <div class="xmas-info__detail">
-              <dt>Duración</dt>
-              <dd>Por determinar</dd>
-            </div>
-            <div class="xmas-info__detail">
-              <dt>Fotografías</dt>
-              <dd>Por determinar</dd>
-            </div>
-            <div class="xmas-info__detail">
-              <dt>Precio</dt>
-              <dd>Por determinar</dd>
-            </div>
-          </dl>
-        -->
+            <dl class="xmas-info__details">
+              <div class="xmas-info__detail">
+                <dt>Fechas</dt>
+                <dd>Por determinar</dd>
+              </div>
+              <div class="xmas-info__detail">
+                <dt>Duración</dt>
+                <dd>Por determinar</dd>
+              </div>
+              <div class="xmas-info__detail">
+                <dt>Fotografías</dt>
+                <dd>Por determinar</dd>
+              </div>
+              <div class="xmas-info__detail">
+                <dt>Precio</dt>
+                <dd>Por determinar</dd>
+              </div>
+            </dl>
+          -->
+        </div>
+      </div>
+      <div class="xmas-info__media">
+        <ImageFrame
+          src={xmasImg1}
+          alt="Rincón de Navidad preparado para las sesiones de 2026"
+          loading="lazy"
+          sizes="(min-width: 769px) 40vw, 90vw"
+          class="xmas-info__img"
+        />
+        <ImageFrame
+          src={xmasImg2}
+          alt="Detalle del decorado navideño en el estudio de Sandra Cabedo"
+          loading="lazy"
+          sizes="(min-width: 769px) 40vw, 90vw"
+          class="xmas-info__img"
+        />
       </div>
     </div>
   </section>
@@ -283,6 +304,7 @@ const seo = {
   .xmas-info__inner {
     display: grid;
     gap: var(--space-xl);
+    align-items: start;
   }
 
   .xmas-info__body {
@@ -298,6 +320,16 @@ const seo = {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--color-text-secondary);
+  }
+
+  .xmas-info__media {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
+
+  .xmas-info__img {
+    border-radius: 4px;
   }
 
   /* Session details list — shown when uncommented */
