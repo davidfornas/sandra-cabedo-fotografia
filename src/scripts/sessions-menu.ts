@@ -4,28 +4,55 @@ export function initSessionsMenu(root: ParentNode = document): void {
   const trigger = menu?.querySelector('summary');
   if (!menu || !trigger) return;
 
+  const desktop = window.matchMedia('(min-width: 769px)');
+  const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let closeTimer: ReturnType<typeof setTimeout> | undefined;
+
+  function cancelClose(): void {
+    clearTimeout(closeTimer);
+    closeTimer = undefined;
+  }
+
+  function close(): void {
+    cancelClose();
+    menu!.open = false;
+  }
+
+  menu.addEventListener('pointerenter', (event: PointerEvent) => {
+    if (event.pointerType !== 'mouse' || !desktop.matches || !hover.matches) return;
+    cancelClose();
+    menu.open = true;
+  });
+
+  menu.addEventListener('pointerleave', (event: PointerEvent) => {
+    if (event.pointerType !== 'mouse' || !desktop.matches || !hover.matches) return;
+    cancelClose();
+    // Allow the pointer to cross the space between the trigger and panel.
+    closeTimer = setTimeout(() => {
+      if (!menu.contains(document.activeElement)) close();
+    }, 250);
+  });
+
   document.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.key !== 'Escape' || !menu.open) return;
     event.preventDefault();
-    menu.open = false;
+    close();
     trigger.focus();
   });
 
   document.addEventListener('click', (event: MouseEvent) => {
     if (menu.open && event.target instanceof Node && !menu.contains(event.target)) {
-      menu.open = false;
+      close();
     }
   });
 
   document.addEventListener('focusin', (event: FocusEvent) => {
     if (menu.open && event.target instanceof Node && !menu.contains(event.target)) {
-      menu.open = false;
+      close();
     }
   });
 
-  window.matchMedia('(min-width: 769px)').addEventListener('change', () => {
-    menu.open = false;
-  });
+  desktop.addEventListener('change', close);
 }
 
 if (typeof document !== 'undefined') {
