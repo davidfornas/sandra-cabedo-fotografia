@@ -53,24 +53,12 @@
 /* --- Section: vertical rhythm between page blocks --- */
 
 .section {
-  padding-block: var(--space-xl);
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding-block: var(--space-2xl);
-  }
+  padding-block: var(--section-space);
 }
 
 /* Tighter variant for closely related consecutive blocks. */
 .section-tight {
-  padding-block: var(--space-lg);
-}
-
-@media (min-width: 768px) {
-  .section-tight {
-    padding-block: var(--space-xl);
-  }
+  padding-block: var(--section-space-tight);
 }
 
 /* --- Grid helpers: single column base, 2-up at tablet, 3-up at desktop ---

@@ -47,6 +47,10 @@
   --space-xl: 4rem;
   --space-2xl: 6rem;
 
+  /* --- Vertical rhythm for page sections --- */
+  --section-space: 2rem;
+  --section-space-tight: 1.5rem;
+
   /* --- Whitespace: side margin >= 10% of the visible area (Req 1.6) --- */
   --layout-side-margin: 10vw;
   --layout-content-max: 1200px;
@@ -54,4 +58,11 @@
   /* --- Interaction sizing (Req 2.7) --- */
   --touch-min: 44px;
   --touch-gap: 8px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-space: 3rem;
+    --section-space-tight: 2rem;
+  }
 }
