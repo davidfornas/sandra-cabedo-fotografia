@@ -1,4 +1,5 @@
 ---
+import ExternalLinkIcon from './ExternalLinkIcon.astro';
 import { site } from '../config/site';
 
 interface Props {
@@ -32,6 +33,7 @@ const href = target === 'dm' ? site.instagram.dmUrl : site.instagram.profileUrl;
     />
   </svg>
   <span class="instagram-cta__label">{label}</span>
+  <ExternalLinkIcon />
 </a>
 
 <style>

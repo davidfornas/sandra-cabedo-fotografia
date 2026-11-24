@@ -1,4 +1,5 @@
 ---
+import ExternalLinkIcon from './ExternalLinkIcon.astro';
 import { whatsappUrl } from '../lib/whatsapp';
 
 export type WhatsAppLabel = 'Reserva tu sesión' | 'Hablemos' | 'Consultar disponibilidad' | 'Hablemos por WhatsApp' | 'Escríbeme por WhatsApp';
@@ -22,7 +23,7 @@ const enabled = url !== null;
       target="_blank"
       rel="noopener noreferrer"
     >
-      {label}
+      {label} <ExternalLinkIcon />
     </a>
   ) : (
     <span

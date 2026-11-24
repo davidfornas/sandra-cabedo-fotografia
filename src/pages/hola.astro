@@ -1,4 +1,5 @@
 ---
+import ExternalLinkIcon from '../components/ExternalLinkIcon.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import WhatsAppCTA from '../components/WhatsAppCTA.astro';
@@ -92,7 +93,7 @@ const hasGoogle = reviewsUrl !== '' || leaveReviewUrl !== '';
               rel="noopener noreferrer"
               data-link="navidad-reel"
             >
-              Ver más ↗
+              Ver más <ExternalLinkIcon />
             </a>
           </li>
         </ul>
@@ -104,12 +105,12 @@ const hasGoogle = reviewsUrl !== '' || leaveReviewUrl !== '';
           <div class="hola__google-actions">
             {reviewsUrl !== '' && (
               <a href={reviewsUrl} class="hola__ghost-link" target="_blank" rel="noopener noreferrer" data-link="google-reviews">
-                Ver opiniones
+                Ver opiniones <ExternalLinkIcon />
               </a>
             )}
             {leaveReviewUrl !== '' && (
               <a href={leaveReviewUrl} class="hola__ghost-link" target="_blank" rel="noopener noreferrer" data-link="google-leave-review">
-                Deja tu opinión
+                Deja tu opinión <ExternalLinkIcon />
               </a>
             )}
           </div>
