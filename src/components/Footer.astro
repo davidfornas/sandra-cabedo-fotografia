@@ -1,4 +1,5 @@
 ---
+import ExternalLinkIcon from './ExternalLinkIcon.astro';
 import { site } from '../config/site';
 import { withBase } from '../lib/url';
 import WhatsAppCTA from './WhatsAppCTA.astro';
@@ -42,7 +43,7 @@ const legalLinks = [
         {site.google.reviewsUrl !== '' && (
           <li>
             <a href={site.google.reviewsUrl} target="_blank" rel="noopener noreferrer">
-              Opiniones en Google
+              Opiniones en Google <ExternalLinkIcon />
             </a>
           </li>
         )}

@@ -1,4 +1,5 @@
 ---
+import ExternalLinkIcon from '../components/ExternalLinkIcon.astro';
 import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/Hero.astro';
@@ -108,6 +109,8 @@ const conoceMeHref = withBase('/sobre-mi/');
   path={seo.path}
   activePath="/"
 >
+  <XmasAnnouncement slot="announcement" />
+
   <Hero
     image={heroImage}
     alt="Padres sosteniendo a su recién nacido en un momento íntimo"
@@ -116,8 +119,6 @@ const conoceMeHref = withBase('/sobre-mi/');
     ctaLabel="Ver sesiones"
     ctaHref="#sessions"
   />
-
-  <XmasAnnouncement />
 
   <section class="section presentation">
     <div class="container presentation__inner">
@@ -265,7 +266,7 @@ const conoceMeHref = withBase('/sobre-mi/');
           target="_blank"
           rel="noopener noreferrer"
         >
-          Ver todas las reseñas en Google&thinsp;↗
+          Ver todas las reseñas en Google <ExternalLinkIcon />
         </a>
       </div>
     </section>
