@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { site } from '../config/site';
 import { getNavItems } from '../lib/nav';
 import { withBase } from '../lib/url';
@@ -18,6 +19,21 @@ interface Props {
 const { activePath } = Astro.props;
 const navItems = getNavItems();
 const menuId = 'primary-navigation';
+const sessionOptions = [
+  { slug: 'embarazo', subtitle: 'Sola, en pareja o en familia' },
+  { slug: 'crecer-juntos', subtitle: 'Contigo en diferentes momentos' },
+  { slug: 'newborn', subtitle: 'Los primeros días o meses' },
+  { slug: 'familia', subtitle: 'Una sesión con todos juntos' },
+];
+const entries = await getCollection('sessions');
+const sessions = sessionOptions.map((option) => {
+  const entry = entries.find((entry) => entry.slug === option.slug);
+  if (!entry) throw new Error(`Sesión no encontrada: ${option.slug}`);
+  return { ...option, ...entry.data, path: `/${option.slug}/` };
+});
+const sessionPaths = new Set(sessions.map((session) => session.path));
+const sessionActive = sessionPaths.has(activePath);
+const desktopNavItems = navItems.filter((item) => !sessionPaths.has(item.path));
 
 function isActive(path: string): boolean {
   return path === activePath;
@@ -65,12 +81,72 @@ function isActive(path: string): boolean {
           ))
         }
       </ul>
+      <ul class="site-header__desktop-menu">
+        {desktopNavItems.map((item, index) => (
+          <>
+            <li>
+              <a
+                class="site-header__link touch-target"
+                href={withBase(item.path)}
+                aria-current={isActive(item.path) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+            {index === 0 && (
+              <li>
+                <details class="sessions-menu" data-sessions-menu>
+                  <summary
+                    class:list={['site-header__link', 'touch-target', 'sessions-menu__trigger', { 'sessions-menu__trigger--active': sessionActive }]}
+                    aria-controls="sessions-panel"
+                  >
+                    Sesiones
+                    <svg class="sessions-menu__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </summary>
+                  <div class="sessions-menu__panel" id="sessions-panel">
+                    <ul class="sessions-menu__cards">
+                      {sessions.map((session) => (
+                        <li>
+                          <a
+                            class="sessions-menu__card"
+                            href={withBase(session.path)}
+                            aria-current={isActive(session.path) ? 'page' : undefined}
+                          >
+                            <Image
+                              class="sessions-menu__photo"
+                              src={session.coverImage}
+                              alt={session.coverAlt}
+                              width={88}
+                              height={66}
+                              widths={[88, 176]}
+                              sizes="88px"
+                              fit="cover"
+                              loading="eager"
+                            />
+                            <span class="sessions-menu__text">
+                              <span class="sessions-menu__title">{session.title}</span>
+                              <span class="sessions-menu__subtitle">{session.subtitle}</span>
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </li>
+            )}
+          </>
+        ))}
+      </ul>
     </nav>
   </div>
 </header>
 
 <script>
   import '../scripts/nav-toggle.ts';
+  import '../scripts/sessions-menu.ts';
 </script>
 
 <style>
@@ -83,6 +159,7 @@ function isActive(path: string): boolean {
   }
 
   .site-header__inner {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -209,7 +286,102 @@ function isActive(path: string): boolean {
     display: flex;
   }
 
-  /* --- Tablet/desktop (>= 769px): full nav, no toggle --- */
+  .site-header__desktop-menu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sessions-menu__trigger {
+    gap: var(--space-2xs);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .sessions-menu__trigger::-webkit-details-marker { display: none; }
+  .sessions-menu__trigger::marker { content: ''; }
+
+  .sessions-menu__trigger--active,
+  .sessions-menu[open] > summary {
+    color: var(--color-accent);
+  }
+
+  .sessions-menu__chevron {
+    flex: none;
+    transition: transform 160ms ease;
+  }
+
+  .sessions-menu[open] .sessions-menu__chevron {
+    transform: rotate(180deg);
+  }
+
+  .sessions-menu__panel {
+    position: absolute;
+    top: 100%;
+    right: var(--space-lg);
+    width: min(760px, calc(100% - 2 * var(--space-lg)));
+    padding: var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-surface-2);
+    box-shadow: 0 12px 24px rgb(43 38 34 / 8%);
+    max-height: calc(100dvh - 12rem);
+    overflow-y: auto;
+  }
+
+  .sessions-menu__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sessions-menu__card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+    border-radius: 6px;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .sessions-menu__card:hover,
+  .sessions-menu__card:focus-visible,
+  .sessions-menu__card[aria-current='page'] {
+    background: var(--color-surface);
+    color: var(--color-accent-strong);
+  }
+
+  .sessions-menu__photo {
+    width: 88px;
+    height: 66px;
+    flex: none;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .sessions-menu__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    min-width: 0;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .sessions-menu__title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sessions-menu__chevron { transition: none; }
+  }
+
+  /* --- Tablet/desktop (>= 769px): grouped sessions, no mobile toggle --- */
   @media (min-width: 769px) {
     .site-header__inner {
       gap: var(--space-sm);
@@ -228,7 +400,12 @@ function isActive(path: string): boolean {
       flex-basis: auto;
     }
 
-    .site-header__menu[data-nav-menu] {
+    .site-header__menu[data-nav-menu],
+    .site-header__menu[data-nav-menu][data-open='true'] {
+      display: none;
+    }
+
+    .site-header__desktop-menu {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
